@@ -1,0 +1,1833 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mulher Prioridade • Plano 7 Dias</title>
+
+<style>
+:root{
+  --bg:#070A10;
+  --card:#0E1626;
+  --stroke:rgba(255,255,255,.10);
+  --txt:#F4F2EE;
+  --mut:#B9C0CC;
+  --gold:#D4AF37;
+  --gold2:#F1DE9A;
+  --ok:#35D07F;
+  --mid:#FFB020;
+  --bad:#FF4D4D;
+  --r:18px;
+  --shadow:0 18px 50px rgba(0,0,0,.55);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:
+    radial-gradient(900px 520px at 20% -10%, rgba(212,175,55,.18), transparent 60%),
+    radial-gradient(820px 520px at 90% 0%, rgba(241,222,154,.08), transparent 55%),
+    radial-gradient(820px 620px at 30% 120%, rgba(107,30,46,.10), transparent 60%),
+    var(--bg);
+  color:var(--txt);
+  padding:14px 12px 26px;
+}
+.wrap{max-width:560px;margin:0 auto}
+
+.top{
+  display:flex;gap:10px;align-items:center;justify-content:space-between;
+  padding:12px;border:1px solid var(--stroke);
+  background:rgba(255,255,255,.03);
+  border-radius:var(--r);
+  box-shadow:var(--shadow);
+  position:sticky; top:10px; z-index:20;
+  backdrop-filter:blur(10px);
+}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{
+  width:38px;height:38px;border-radius:14px;display:grid;place-items:center;
+  border:1px solid rgba(212,175,55,.35);
+  background:rgba(212,175,55,.10);
+  flex:0 0 auto;
+}
+.logo svg path{
+  stroke:rgba(212,175,55,.95);
+  stroke-width:1.8;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.h1{margin:0;font-size:13px;letter-spacing:.2px;font-weight:950}
+.p{margin:2px 0 0;color:var(--mut);font-size:12px;line-height:1.2}
+.pill{
+  font-size:12px;color:#0b0f16;padding:7px 10px;border-radius:999px;
+  background:linear-gradient(180deg,var(--gold2),var(--gold));
+  font-weight:950;border:1px solid rgba(0,0,0,.25);white-space:nowrap;
+}
+
+.card{
+  margin-top:12px;
+  padding:14px;
+  border:1px solid var(--stroke);
+  border-radius:var(--r);
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+h2{margin:0 0 8px;font-size:16px}
+.small{color:var(--mut);font-size:12px;line-height:1.45}
+.hr{height:1px;background:rgba(255,255,255,.08);margin:12px 0}
+
+.grid{display:grid;gap:10px}
+.btn{
+  width:100%;
+  border:0;
+  border-radius:16px;
+  padding:12px 12px;
+  font-weight:950;
+  letter-spacing:.2px;
+  cursor:pointer;
+}
+.btnP{
+  background:linear-gradient(180deg,var(--gold2),var(--gold));
+  color:#0b0f16;
+  box-shadow:0 14px 30px rgba(0,0,0,.45);
+}
+.btnG{
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--stroke);
+  color:var(--txt);
+}
+.btnR{
+  background:rgba(255,77,77,.10);
+  border:1px solid rgba(255,77,77,.30);
+  color:var(--txt);
+}
+.btn:disabled{opacity:.55;cursor:not-allowed;box-shadow:none}
+
+.input{
+  width:100%;
+  padding:12px 12px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.25);
+  color:var(--txt);
+  outline:none;
+}
+.textarea{
+  width:100%;
+  resize:vertical;
+  padding:12px 12px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.25);
+  color:var(--txt);
+  outline:none;
+  line-height:1.5;
+}
+.textarea.sm{min-height:92px}
+.textarea.lg{min-height:140px}
+
+.badge{
+  display:inline-flex; gap:8px; align-items:center;
+  padding:7px 10px; border-radius:999px;
+  border:1px solid var(--stroke);
+  background:rgba(0,0,0,.25);
+  color:var(--mut);
+  font-size:12px;
+}
+.dot{width:10px;height:10px;border-radius:999px;background:var(--mid)}
+
+.tile{
+  border:1px solid var(--stroke);
+  border-radius:16px;
+  padding:12px;
+  background:rgba(0,0,0,.22);
+}
+.tile b{display:block;font-size:13px;margin-bottom:6px}
+.tile p{margin:0;color:rgba(255,255,255,.86);font-size:13px;line-height:1.45}
+
+.moods{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.chip{
+  border:1px solid var(--stroke);
+  background:rgba(0,0,0,.22);
+  border-radius:16px;
+  padding:12px;
+  cursor:pointer;
+  font-weight:950;
+  letter-spacing:.2px;
+  color:rgba(255,255,255,.90);
+  text-align:center;
+}
+.chip:hover{border-color:rgba(212,175,55,.25);background:rgba(212,175,55,.06)}
+.chip.sel{border-color:rgba(212,175,55,.45);background:rgba(212,175,55,.10)}
+
+.progRow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.progMini{
+  height:6px;
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+}
+.progMini > div{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--gold2));
+  transition:width .25s ease;
+}
+
+.timeline{
+  display:grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap:8px;
+  align-items:end;
+  margin-top:10px;
+}
+.tcol{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.22);
+  border-radius:14px;
+  padding:10px 8px;
+  display:grid;
+  gap:8px;
+  align-items:end;
+}
+.tbar{
+  width:100%;
+  border-radius:999px;
+  background:rgba(255,255,255,.10);
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  height:56px;
+  display:flex;
+  align-items:flex-end;
+}
+.fill{
+  width:100%;
+  height:20%;
+  background:linear-gradient(180deg,var(--gold2),var(--gold));
+  transition:height .25s ease;
+}
+.tlabel{
+  text-align:center;
+  font-size:11px;
+  color:rgba(255,255,255,.75);
+}
+.tcol.cur{border-color:rgba(212,175,55,.35); background:rgba(212,175,55,.06)}
+.tcol.done{border-color:rgba(53,208,127,.22); background:rgba(53,208,127,.06)}
+.tcol.cur .tlabel{color:rgba(241,222,154,.95)}
+.tcol.done .tlabel{color:rgba(53,208,127,.90)}
+
+.day{
+  display:flex; align-items:flex-start; gap:10px;
+  padding:12px; border-radius:16px; border:1px solid var(--stroke);
+  background:rgba(0,0,0,.22);
+}
+.day.cur{border-color:rgba(212,175,55,.35); background:rgba(212,175,55,.06)}
+.day.done{border-color:rgba(53,208,127,.22); background:rgba(53,208,127,.06)}
+.day input{margin-top:2px; accent-color:var(--gold); width:18px; height:18px}
+.day .t{flex:1}
+.day .t b{display:block;font-size:13px;margin-bottom:4px}
+.day .t span{display:block;color:rgba(255,255,255,.86);font-size:12.8px;line-height:1.42}
+
+.kbd{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+  font-size:12px;
+  padding:3px 8px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.28);
+  color:var(--txt);
+}
+
+a{color:var(--gold2);text-decoration:none}
+a:hover{text-decoration:underline}
+.hide{display:none}
+
+/* modal crise */
+.modalBg{
+  position:fixed; inset:0; background:rgba(0,0,0,.55);
+  display:none; align-items:flex-end; justify-content:center; z-index:999;
+}
+.modal{
+  width:min(560px, 100%);
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:20px 20px 0 0;
+  padding:14px;
+}
+.modalTop{display:flex;align-items:center;justify-content:space-between;gap:10px}
+
+/* mini área vip */
+.libModalBg{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.72);
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  z-index:1001;
+}
+.libModal{
+  width:min(560px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:
+    radial-gradient(700px 240px at 20% -10%, rgba(212,175,55,.16), transparent 60%),
+    linear-gradient(180deg, rgba(14,22,38,.98), rgba(7,10,16,.98));
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:22px 22px 0 0;
+  padding:16px;
+  box-shadow:0 18px 50px rgba(0,0,0,.55);
+}
+.libModal h2{margin:0 0 8px}
+.libModal p,.libModal li{
+  color:rgba(255,255,255,.88);
+  line-height:1.6;
+  font-size:14px;
+}
+.libModal ul{padding-left:18px}
+
+/* biblioteca vip visual */
+.titleGlow{
+  background:linear-gradient(90deg,#F1DE9A,#D4AF37,#F1DE9A);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:goldGlow 4s linear infinite;
+}
+@keyframes goldGlow{
+  to{background-position:200% center;}
+}
+
+.vipShelf{
+  display:grid;
+  gap:12px;
+}
+
+.vipCard{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:14px;
+  background:
+    radial-gradient(500px 160px at 0% 0%, rgba(212,175,55,.10), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  text-align:left;
+  color:var(--txt);
+  cursor:pointer;
+  transition:all .18s ease;
+}
+.vipCard:hover{
+  transform:translateY(-2px);
+  border-color:rgba(212,175,55,.35);
+  box-shadow:0 10px 26px rgba(0,0,0,.28);
+}
+.vipCard.locked{
+  opacity:.78;
+  cursor:not-allowed;
+}
+.vipCard.locked:hover{
+  transform:none;
+  box-shadow:none;
+  border-color:rgba(255,255,255,.08);
+}
+.vipTop{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.vipPoster{
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  background:rgba(212,175,55,.10);
+  border:1px solid rgba(212,175,55,.28);
+}
+.vipPoster svg{
+  width:22px;
+  height:22px;
+}
+.vipPoster svg path{
+  stroke:#F1DE9A;
+  stroke-width:1.8;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.vipInfo{
+  flex:1;
+  min-width:0;
+}
+.vipInfo strong{
+  display:block;
+  font-size:14px;
+  line-height:1.25;
+}
+.vipInfo small{
+  display:block;
+  margin-top:4px;
+  color:var(--mut);
+  font-size:12px;
+  line-height:1.35;
+}
+.vipTag{
+  margin-top:10px;
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:7px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(0,0,0,.20);
+  color:var(--mut);
+  font-size:11px;
+  font-weight:800;
+}
+.vipLocked{
+  color:#FFD8D8;
+  border-color:rgba(255,77,77,.18);
+  background:rgba(255,77,77,.08);
+}
+.vipOpen{
+  color:#F1DE9A;
+  border-color:rgba(212,175,55,.18);
+  background:rgba(212,175,55,.08);
+}
+.vipArrow{
+  font-size:22px;
+  color:var(--gold2);
+  line-height:1;
+}
+
+.vipCover{
+  border:1px solid rgba(212,175,55,.18);
+  border-radius:18px;
+  padding:16px;
+  background:
+    radial-gradient(500px 180px at 20% 0%, rgba(212,175,55,.12), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  margin-bottom:12px;
+}
+.vipSeal{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(212,175,55,.10);
+  border:1px solid rgba(212,175,55,.28);
+  color:var(--gold2);
+  font-size:12px;
+  font-weight:900;
+}
+.vipSeal svg{width:16px;height:16px}
+.vipSeal svg path{
+  stroke:var(--gold2);
+  stroke-width:1.8;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.vipTitle{
+  font-size:22px;
+  line-height:1.2;
+  margin:14px 0 8px;
+  font-weight:950;
+}
+.vipSub{
+  color:rgba(255,255,255,.82);
+  line-height:1.6;
+  font-size:14px;
+}
+.vipMini{
+  margin-top:12px;
+  color:var(--mut);
+  font-size:12px;
+  line-height:1.45;
+}
+.vipList{
+  display:grid;
+  gap:10px;
+  margin-top:14px;
+}
+.vipItem{
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  padding:12px;
+  background:rgba(255,255,255,.03);
+}
+.vipItem b{
+  display:block;
+  margin-bottom:4px;
+  font-size:13px;
+}
+.vipItem span{
+  color:var(--mut);
+  font-size:12px;
+  line-height:1.45;
+}
+.libActions{
+  display:grid;
+  gap:10px;
+  margin-top:14px;
+}
+
+/* toast */
+.toast{
+  position: fixed;
+  left: 12px; right: 12px; bottom: 14px;
+  max-width: 560px; margin: 0 auto;
+  padding: 10px 12px; border-radius: 16px;
+  border: 1px solid rgba(212,175,55,.28);
+  background: rgba(212,175,55,.10);
+  color: rgba(255,255,255,.92);
+  font-size: 12.8px; line-height: 1.45;
+  box-shadow: 0 18px 50px rgba(0,0,0,.55);
+  display:none; z-index: 1002;
+}
+.toast.ok{border-color: rgba(53,208,127,.28); background: rgba(53,208,127,.10)}
+.toast.warn{border-color: rgba(255,176,32,.28); background: rgba(255,176,32,.10)}
+.toast.bad{border-color: rgba(255,77,77,.28); background: rgba(255,77,77,.10)}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path d="M4 9l4 4 4-6 4 6 4-4"/>
+          <path d="M6 19h12"/>
+          <path d="M6 19l-1-8"/>
+          <path d="M18 19l1-8"/>
+        </svg>
+      </div>
+      <div>
+        <div class="h1">Mulher Prioridade • Plano 7 Dias</div>
+        <div class="p">Reconstrução emocional • postura • paz</div>
+      </div>
+    </div>
+    <div class="pill" id="topPill">Acesso</div>
+  </div>
+
+  <!-- LOGIN -->
+  <section class="card" id="login">
+    <h2>Entrar</h2>
+    <div class="small">Digite a senha de acesso enviada após a compra.</div>
+    <div class="hr"></div>
+    <input class="input" id="pass" type="password" placeholder="Senha de acesso" autocomplete="current-password" />
+    <div class="grid" style="margin-top:10px">
+      <button class="btn btnP" id="enter">Acessar</button>
+      <div class="tile" id="errBox" style="display:none;border-color:rgba(255,77,77,.28);background:rgba(255,77,77,.10)">
+        <b>Senha incorreta</b>
+        <p>Verifique e tente novamente.</p>
+      </div>
+      <div class="small">Não comprou? <a href="quiz.html">Faça o teste</a>.</div>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <section class="hide" id="app">
+
+    <div class="card hide" id="welcomeCard">
+      <h2>Bem-vinda ao seu recomeço</h2>
+      <div class="tile">
+        <b>Durante os próximos 7 dias você vai reconstruir algo muito importante:</b>
+        <p><b>sua paz.</b> 🕊️</p>
+      </div>
+      <div class="small" style="margin-top:10px">
+        Talvez você tenha se sentido confusa, ansiosa ou presa em um ciclo. Aqui, você vai dar passos pequenos — porém reais — para voltar para você.
+      </div>
+      <div class="grid" style="margin-top:10px">
+        <button class="btn btnP" id="startJourney">Começar minha reconstrução</button>
+      </div>
+    </div>
+
+    <div class="card" id="crisisTop">
+      <div class="row">
+        <div class="badge"><span class="dot" style="background:var(--bad)"></span><span><b>Crise agora</b></span></div>
+        <div class="small">1 toque</div>
+      </div>
+      <div class="hr"></div>
+      <button class="btn btnR" id="crisisBtn">⚠ Estou com vontade de mandar mensagem</button>
+      <div class="small" style="margin-top:8px">Você não decide no pico. Você atravessa o pico. 💛</div>
+    </div>
+
+    <div class="card" id="checkinCard">
+      <h2>Como você está hoje?</h2>
+      <div class="small">Escolha com sinceridade. Depois disso, sua mensagem do dia aparece.</div>
+      <div class="moods" id="moods"></div>
+      <div class="grid" style="margin-top:10px">
+        <button class="btn btnP" id="saveMood" disabled>Ver minha mensagem do dia</button>
+      </div>
+    </div>
+
+    <div class="card hide" id="messageCard">
+      <h2>Mensagem do seu dia</h2>
+      <div class="tile">
+        <b id="msgHead">✨</b>
+        <p id="msgText"></p>
+      </div>
+      <div class="small" style="margin-top:10px">Leve o que serve. Solte o que pesa. 🕊️</div>
+    </div>
+
+    <div class="card">
+      <div class="row">
+        <div class="badge"><span class="dot" id="dot"></span><span id="statusTxt">Seu caminho</span></div>
+        <div class="small">Hoje: <span class="kbd" id="today"></span></div>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="progRow">
+        <div class="small"><b><span id="done">0</span>/7</b> dias</div>
+        <div class="small" id="progLabel">Primeiros passos</div>
+      </div>
+      <div class="progMini" style="margin-top:8px"><div id="bar"></div></div>
+
+      <div class="hr"></div>
+      <div class="small"><b>Linha do tempo do brilho</b> • dia 1 → dia 7 (paz subindo) ✨</div>
+      <div class="timeline" id="timeline"></div>
+
+      <div class="hr"></div>
+      <div class="tile">
+        <b>💬 O que outras mulheres relatam</b>
+        <p id="socialLine">No 3º dia eu parei de stalkear.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Mapa do gatilho (20s)</h2>
+      <div class="small">Consciência diminui ansiedade. Escolha rápido e siga. 🌿</div>
+      <div class="hr"></div>
+
+      <div class="tile">
+        <b>O que despertou seu gatilho hoje?</b>
+        <div class="grid" id="triggerOpts" style="margin-top:8px"></div>
+      </div>
+
+      <div class="tile" style="margin-top:10px">
+        <b>Intensidade (1 a 10)</b>
+        <input class="input" id="intensity" type="number" min="1" max="10" placeholder="Ex: 7" />
+      </div>
+
+      <div class="tile" style="margin-top:10px">
+        <b>O que você fez por você hoje?</b>
+        <div class="grid" id="actionOpts" style="margin-top:8px"></div>
+      </div>
+
+      <div class="grid" style="margin-top:10px">
+        <button class="btn btnG" id="saveTrigger">Salvar</button>
+      </div>
+      <div class="small" id="triggerSaved" style="margin-top:8px;display:none">Salvo. Você está se cuidando. 💛</div>
+    </div>
+
+    <div class="card">
+      <h2>Carta para mim</h2>
+      <div class="small">Escreva para você mesma ler quando bater a recaída. Isso funciona muito.</div>
+      <div class="hr"></div>
+      <textarea class="textarea lg" id="letter" maxlength="1200" placeholder="Ex: Eu não vou me humilhar. Eu escolho paz. Eu vou passar por isso."></textarea>
+      <div class="grid" style="margin-top:10px">
+        <button class="btn btnG" id="saveLetter">Salvar minha carta</button>
+      </div>
+      <div class="small" style="margin-top:8px">Dica: escreva simples, como uma amiga. 👑</div>
+    </div>
+
+    <div class="card">
+      <h2>Lista do NÃO</h2>
+      <div class="small">Limites mínimos. Sem drama. Só paz. 🛡️</div>
+      <div class="hr"></div>
+      <div class="grid" id="noList"></div>
+    </div>
+
+    <div class="card">
+      <h2>Plano Anti-Stalk</h2>
+      <div class="small">Você não precisa “aguentar”. Você se protege. 🌿</div>
+      <div class="hr"></div>
+      <div class="grid" id="antiStalk"></div>
+    </div>
+
+    <div class="card">
+      <h2>Diário de 3 linhas</h2>
+      <div class="small">Escreva pouco, mas escreva. Isso organiza o coração. 💛</div>
+      <div class="hr"></div>
+
+      <div class="tile">
+        <b>Hoje eu senti</b>
+        <textarea class="textarea sm" id="d1" maxlength="220"></textarea>
+      </div>
+
+      <div class="tile" style="margin-top:10px">
+        <b>Hoje eu fiz</b>
+        <textarea class="textarea sm" id="d2" maxlength="220"></textarea>
+      </div>
+
+      <div class="tile" style="margin-top:10px">
+        <b>Hoje eu aprendi</b>
+        <textarea class="textarea sm" id="d3" maxlength="220"></textarea>
+      </div>
+
+      <div class="grid" style="margin-top:10px">
+        <button class="btn btnG" id="saveDiary">Salvar diário de hoje</button>
+      </div>
+      <div class="small" style="margin-top:10px">Fica salvo só no seu celular. 🌿</div>
+    </div>
+
+    <div class="card" id="focusCard">
+      <h2>Foco de hoje</h2>
+      <div class="tile">
+        <b id="focusHead">✨ Dia</b>
+        <p id="focusText"></p>
+      </div>
+      <div class="small" style="margin-top:10px">Você pode marcar outros dias, mas hoje foque neste. 🌿</div>
+    </div>
+
+    <div class="card">
+      <h2>Plano 7 dias</h2>
+      <div class="small">Marque quando concluir. Cada marca é um passo a mais em direção à sua paz. 🕊️</div>
+      <div class="hr"></div>
+      <div class="grid" id="days"></div>
+    </div>
+
+    <div class="card">
+      <h2>Hoje eu me escolho</h2>
+      <div class="small">Ações pequenas que devolvem leveza e brilho. 🌿</div>
+      <div class="hr"></div>
+      <div class="tile">
+        <b id="treatTitle">🍰 Uma ação para hoje</b>
+        <p id="treatText"></p>
+      </div>
+      <div class="grid" style="margin-top:10px">
+        <button class="btn btnG" id="newTreat">Quero outra sugestão</button>
+      </div>
+    </div>
+
+    <div class="card" id="emergencyCard">
+      <h2>Modo emergência</h2>
+      <div class="small">Para quando bater vontade de mandar mensagem, stalkear ou voltar ao ciclo.</div>
+      <div class="hr"></div>
+
+      <div class="grid">
+        <button class="btn btnP" id="startEmergency">Iniciar agora</button>
+        <button class="btn btnG" id="resetEmergency">Resetar</button>
+      </div>
+
+      <div class="hr"></div>
+      <div class="row">
+        <div class="badge"><span class="dot" id="edot"></span><span id="emode">Pronta</span></div>
+        <div class="small">Tempo: <span class="kbd" id="etime">02:00</span></div>
+      </div>
+
+      <div class="grid" style="margin-top:10px">
+        <div class="tile"><b>1) Pausa de 120 segundos</b><p>Impulso é pico. Você atravessa o pico e volta pro controle.</p></div>
+        <div class="tile"><b>2) Respiração 4-4-6</b><p>Inspire 4s • segure 4s • solte 6s (4 vezes). 🫁</p></div>
+        <div class="tile"><b>3) Pergunta de realidade</b><p>Isso é amor… ou é medo de perder? Escolha o que te protege. 🛡️</p></div>
+        <div class="tile"><b>4) Ação mínima</b><p>Beba água. Levante. Ande 2 minutos. Volte pro seu corpo. 🚶‍♀️</p></div>
+        <div class="tile"><b>5) Espelho mental</b><p>Se fosse sua filha vivendo isso, você permitiria? Seja sua própria proteção. 👑</p></div>
+        <div class="tile"><b>6) Visualização de liberdade</b><p>Feche os olhos 10s. Imagine você leve, linda, rindo e livre. Seu brilho está voltando. ✨</p></div>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="grid">
+        <button class="btn btnG" id="readLetter">💌 Ler minha carta agora</button>
+      </div>
+
+      <div class="tile" id="letterBox" style="margin-top:10px;display:none">
+        <b>💌 Sua carta</b>
+        <p id="letterText"></p>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="tile">
+        <b>💬 Oi amiga… me conta</b>
+        <p class="small" style="margin-top:6px">Como você está se sentindo agora? Desabafa aqui comigo.</p>
+        <textarea class="textarea lg" id="vent" maxlength="3000" placeholder="Escreve tudo… sem filtro."></textarea>
+        <div class="row" style="margin-top:8px">
+          <span class="small">Caracteres: <span class="kbd" id="vcount">0</span>/3000</span>
+          <button class="btn btnG" id="replyBtn" style="width:auto;padding:10px 12px">Quero um conselho</button>
+        </div>
+      </div>
+
+      <div class="tile" id="friendReply" style="margin-top:10px; display:none">
+        <b>💛 Resposta pra você</b>
+        <p id="friendText"></p>
+        <div class="small" style="margin-top:8px">
+          Se você estiver em sofrimento intenso ou em risco, procure ajuda profissional e alguém de confiança.
+        </div>
+      </div>
+    </div>
+
+    <div class="card hide" id="week2">
+      <h2>Você desbloqueou a próxima fase ✨</h2>
+      <div class="small">Semana 2 (bônus) • você não precisa parar aqui.</div>
+      <div class="hr"></div>
+      <div class="tile"><b>1) Reposicionamento emocional</b><p>Limites + padrão mínimo + autocontrole.</p></div>
+      <div class="tile" style="margin-top:10px"><b>2) Autoimagem feminina</b><p>Rotina leve + identidade + presença.</p></div>
+      <div class="tile" style="margin-top:10px"><b>3) Magnetismo e presença</b><p>Postura + energia + atração saudável.</p></div>
+    </div>
+
+    <!-- BIBLIOTECA VIP -->
+    <div class="card">
+      <h2 class="titleGlow">Mini Área VIP</h2>
+      <div class="small">Conteúdo exclusivo liberado conforme sua evolução no plano.</div>
+      <div class="hr"></div>
+      <div class="vipShelf" id="vipShelf"></div>
+    </div>
+
+    <div class="card">
+      <h2>Privacidade</h2>
+      <div class="small">
+        Tudo fica salvo no seu aparelho. Se limpar dados do navegador, zera.
+      </div>
+      <div class="grid" style="margin-top:10px">
+        <button class="btn btnG" id="wipe">Zerar meu progresso</button>
+      </div>
+    </div>
+
+  </section>
+</div>
+
+<!-- MODAL CRISE -->
+<div class="modalBg" id="modalBg">
+  <div class="modal">
+    <div class="modalTop">
+      <div class="badge"><span class="dot" style="background:var(--bad)"></span><span><b>Crise agora</b></span></div>
+      <button class="btn btnG" id="closeModal" style="width:auto;padding:10px 12px">Fechar</button>
+    </div>
+    <div class="hr"></div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- MODAL VIP -->
+<div class="libModalBg" id="libModalBg">
+  <div class="libModal">
+    <div class="modalTop">
+      <div class="badge"><span class="dot" style="background:var(--gold)"></span><span><b>Mini Área VIP</b></span></div>
+      <button class="btn btnG" id="closeLib" style="width:auto;padding:10px 12px">Fechar</button>
+    </div>
+    <div class="hr"></div>
+    <div id="libBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const APP_PASSWORD = "PRIORIDADE7";
+
+const UNLOCK_KEY = "mp_unlocked_vip_v1";
+const START_KEY  = "mp_start_date_vip_v1";
+const PROG_KEY   = "mp_progress_vip_v1";
+const MOOD_KEY   = "mp_mood_by_day_vip_v1";
+const DIARY_KEY  = "mp_diary_vip_v1";
+const LETTER_KEY = "mp_letter_vip_v1";
+const TRIGGER_KEY= "mp_trigger_vip_v1";
+const NOLIST_KEY = "mp_nolist_vip_v1";
+const STALK_KEY  = "mp_antistalk_vip_v1";
+const WELCOME_KEY= "mp_seen_welcome_vip_v1";
+
+const DAYS = [
+ {t:"Dia 1 • Redução de estímulos", d:"Hoje você não inicia contato. Observe o impulso e não alimente o ciclo."},
+ {t:"Dia 2 • Identidade", d:"Escreva 3 qualidades suas que não dependem de ninguém. Leia em voz alta."},
+ {t:"Dia 3 • Autonomia", d:"Saia sozinha 20 minutos. Sem postar. Só você."},
+ {t:"Dia 4 • Corte de gatilhos", d:"Silencie gatilhos e pare de checar sinais. Paz primeiro."},
+ {t:"Dia 5 • Reconstrução", d:"Defina 1 meta pequena pessoal e execute hoje."},
+ {t:"Dia 6 • Autoimagem", d:"Se arrume para você. O corpo sente o que a mente nega."},
+ {t:"Dia 7 • Reposicionamento", d:"Defina seu padrão mínimo: o que você não aceita mais."},
+];
+
+const MOODS = [
+ {k:"mal", label:"😔 Estou mal"},
+ {k:"ok", label:"😐 Estou ok"},
+ {k:"bem", label:"🙂 Estou bem"},
+ {k:"otimo", label:"✨ Estou muito bem"},
+];
+
+const MSG7 = {
+ mal: [
+  {h:"🌿 Dia 1 — Respira comigo", t:"Hoje não é dia de se cobrar. É dia de se acolher. Um passo pequeno já é vitória."},
+  {h:"🕊️ Dia 2 — Você não está sozinha", t:"Seu coração cansou de lutar. Hoje: gentileza + silêncio + proteção."},
+  {h:"💛 Dia 3 — Você é maior que isso", t:"A dor parece grande, mas não é eterna. Você vai voltar a se sentir leve."},
+  {h:"🛡️ Dia 4 — Segurança primeiro", t:"Tudo o que te tira paz não é amor. Hoje: limite, não explicação."},
+  {h:"🌙 Dia 5 — Volta pro seu centro", t:"Quando bater saudade, volta pro corpo. Água, banho, caminhada. Você se segura."},
+  {h:"✨ Dia 6 — Seu brilho não sumiu", t:"Ele só ficou escondido. Hoje você faz algo por você. Sem culpa."},
+  {h:"👑 Dia 7 — Você se escolheu", t:"Você não precisa mendigar. Você merece constância. Você merece paz."},
+ ],
+ ok: [
+  {h:"💎 Dia 1 — Direção", t:"Você não precisa estar 100%. Só precisa ir. Pequeno passo hoje."},
+  {h:"🧭 Dia 2 — Clareza", t:"O que é seu não te confunde. Hoje, escolha o que te deixa calma."},
+  {h:"🌿 Dia 3 — Constância", t:"Emoção vai e volta. Postura fica. Hoje: postura."},
+  {h:"🌙 Dia 4 — Paz é treino", t:"Paz se constrói com limites. Você não negocia dignidade."},
+  {h:"🕊️ Dia 5 — Você está voltando", t:"Você está se reorganizando por dentro. Isso é real, mesmo que silencioso."},
+  {h:"✨ Dia 6 — Vida além do ciclo", t:"Hoje faça algo seu. Só seu. E observe como sua energia muda."},
+  {h:"👑 Dia 7 — Padrão alto", t:"Amor bom é claro, leve e constante. E você merece isso."},
+ ],
+ bem: [
+  {h:"✨ Dia 1 — Começou", t:"Sinais de mudança aparecem quando você se escolhe. Continue."},
+  {h:"👑 Dia 2 — Postura bonita", t:"Você está retomando seu centro. Não volte para o que drenava sua paz."},
+  {h:"🕊️ Dia 3 — Leveza", t:"Hoje: menos ansiedade, mais vida. Você consegue."},
+  {h:"💎 Dia 4 — Valor", t:"O mínimo não é suficiente. Você está aprendendo a não aceitar migalhas."},
+  {h:"🌿 Dia 5 — Autonomia", t:"Você está mais inteira. Faça algo só por você hoje e sinta isso."},
+  {h:"🌙 Dia 6 — Amor próprio em prática", t:"Hoje não é sobre provar nada. É sobre manter sua paz."},
+  {h:"🔥 Dia 7 — Você mudou", t:"O ciclo perde força quando você se fortalece. Seu brilho está evidente."},
+ ],
+ otimo: [
+  {h:"🔥 Dia 1 — Brilho", t:"Isso é você voltando pra si. Constância hoje vira destino amanhã."},
+  {h:"💎 Dia 2 — Controle", t:"Você está no comando do seu coração. Não entregue isso de volta."},
+  {h:"👑 Dia 3 — Padrão", t:"Amor bom não exige que você se diminua."},
+  {h:"✨ Dia 4 — Energia", t:"Sua energia muda quando você se respeita. Continue nesse lugar."},
+  {h:"🕊️ Dia 5 — Paz", t:"Escolha paz mesmo que alguém não entenda. Você entende. E basta."},
+  {h:"🌙 Dia 6 — Mulher prioridade", t:"Você não corre atrás. Você se escolhe. E isso é magnético."},
+  {h:"🔥 Dia 7 — Nova versão", t:"Você construiu uma versão sua mais livre. Isso é poder."},
+ ]
+};
+
+const TREATS = [
+ {h:"🍰 Um carinho para você", t:"Compre um doce que você ama. Sem culpa. Com presença. Você merece."},
+ {h:"☕ Autonomia leve", t:"Vá a um café sozinha por 20 minutos. Sem pressa. Sem esperar ninguém."},
+ {h:"🎬 Filme que abraça", t:"Assista algo leve e feliz hoje. Seu cérebro precisa de descanso."},
+ {h:"🛁 Banho demorado", t:"Tome um banho longo. Cuide do seu corpo. Sua mente acompanha."},
+ {h:"🌅 Reencontro com a vida", t:"Vá ver o pôr do sol. Lembre que a vida é maior do que uma pessoa."},
+ {h:"💄 Brilho de volta", t:"Se arrume para você. O brilho é sua identidade."},
+];
+
+const SOCIAL = [
+ "No 3º dia eu parei de stalkear.",
+ "Eu voltei a dormir melhor.",
+ "Eu parei de me humilhar.",
+ "Eu comecei a me sentir mais leve."
+];
+
+const TRIGGERS = ["Saudade","Ciúmes","Solidão","Rejeição","Tédio","Ansiedade"];
+const ACTIONS  = ["Respirei","Saí um pouco","Conversei com alguém","Fiquei comigo","Tomei banho","Caminhei 2 min"];
+
+const NOLIST = [
+ "Eu não imploro atenção.",
+ "Eu não aceito migalhas.",
+ "Eu não me abandono por ninguém.",
+ "Eu não corro atrás de quem me confunde.",
+ "Eu escolho paz, não ansiedade."
+];
+
+const ANTISTALK = [
+ "Silenciei stories e posts.",
+ "Parei de olhar perfil.",
+ "Removi fotos antigas ou escondi.",
+ "Tirei conversa do topo / arquivei.",
+];
+
+const VIP_MODULES = [
+  {
+    unlockDay:1,
+    title:"Estratégias para autoestima voltar",
+    subtitle:"Base para voltar a se escolher",
+    intro:"Sua autoestima não volta quando alguém te escolhe. Ela volta quando você para de se abandonar.",
+    bullets:[
+      ["O que enfraquece","Comparação, validação externa e abandono de si."],
+      ["O que fortalece","Micro vitórias, autocuidado com intenção e postura."],
+      ["Nova base","Seu valor não depende da atenção de ninguém."]
+    ],
+    content:`
+      <p>A autoestima começa a voltar quando o corpo e a mente recebem sinais de cuidado real.</p>
+      <p>Do ponto de vista da psicologia comportamental, pequenas ações repetidas mudam identidade. Quando você se arruma, se cuida e cumpre promessas simples, seu cérebro começa a registrar: “eu importo”.</p>
+      <ul>
+        <li>arrume o cabelo mesmo em casa</li>
+        <li>use perfume para você</li>
+        <li>troque a roupa de “sobrevivência” por uma que te faça sentir viva</li>
+        <li>olhe no espelho por 30 segundos e repita: “eu estou voltando para mim”</li>
+      </ul>
+      <p>Outra chave importante é a regra das micro vitórias: escolha uma ação pequena por dia e cumpra. O cérebro aumenta a sensação de controle quando você finaliza o que promete.</p>
+      <p>Exemplos: caminhar 10 minutos, passar um hidratante com calma, organizar algo pequeno, fazer uma maquiagem leve, comprar uma flor, ouvir uma música que te faça lembrar de quem você era antes da dor.</p>
+      <p>Autoestima não é só se achar bonita. É começar a agir como alguém que merece paz, respeito e presença.</p>
+    `
+  },
+  {
+    unlockDay:2,
+    title:"Código da atração feminina",
+    subtitle:"Presença, energia e valor",
+    intro:"A energia que atrai respeito nasce quando você para de implorar validação.",
+    bullets:[
+      ["Presença","Menos ansiedade, mais calma e coerência."],
+      ["Valor","Quem se respeita transmite padrão alto."],
+      ["Energia","Atração saudável nasce da inteireza."]
+    ],
+    content:`
+      <p>A atração verdadeira não nasce da necessidade. Ela nasce da presença.</p>
+      <p>Quando a mulher está ansiosa, o corpo transmite urgência. Quando está inteira, transmite valor. Essa diferença muda completamente a forma como ela é percebida.</p>
+      <ul>
+        <li>não responda por impulso</li>
+        <li>não cobre clareza de quem ama confundir</li>
+        <li>não entregue tudo de você para ser notada</li>
+      </ul>
+      <p>O código da atração feminina está em três pilares: calma, mistério e coerência.</p>
+      <p>Calma faz o outro sentir que você não está desesperada. Mistério cria curiosidade. Coerência mostra que você sabe o que quer.</p>
+      <p>Uma mulher com energia alinhada não corre atrás de migalhas. Ela deixa claro, pelo comportamento, que se escolhe primeiro.</p>
+    `
+  },
+  {
+    unlockDay:3,
+    title:"Postura, magnetismo e desejo",
+    subtitle:"Força emocional e presença",
+    intro:"Magnetismo não é aparência. É a forma como você ocupa seu espaço emocional.",
+    bullets:[
+      ["Postura","Você não se curva para caber."],
+      ["Magnetismo","Calma e clareza geram presença."],
+      ["Desejo","Valor é percebido quando você não se abandona."]
+    ],
+    content:`
+      <p>Magnetismo é energia + corpo + estado emocional.</p>
+      <p>O cérebro humano lê sinais antes mesmo das palavras. Isso significa que sua postura muda a forma como você é sentida.</p>
+      <ul>
+        <li>ande com os ombros levemente para trás</li>
+        <li>fale um pouco mais devagar</li>
+        <li>olhe nos olhos por dois segundos a mais</li>
+        <li>respire antes de responder algo emocional</li>
+      </ul>
+      <p>Sobre simpatias e rituais simbólicos: use-os como gatilhos de estado, não como dependência. O que ativa o magnetismo é o comportamento coerente depois do ritual.</p>
+      <p><b>Mini ritual de presença:</b> antes de sair, respire fundo 3 vezes, passe seu perfume com intenção e diga: “eu não corro atrás, eu atraio”.</p>
+      <p>Desejo cresce quando sua energia não transmite carência.</p>
+    `
+  },
+  {
+    unlockDay:4,
+    title:"Ativação dos melhores arquétipos",
+    subtitle:"Cleópatra e Sereia",
+    intro:"Arquétipos são símbolos internos que ajudam você a acessar estados emocionais de poder, sedução e presença.",
+    bullets:[
+      ["Cleópatra","Poder, sedução, prosperidade e inteligência."],
+      ["Sereia","Encantamento, sociabilidade e popularidade."],
+      ["Uso certo","Arquétipo é estado interno, não fantasia vazia."]
+    ],
+    content:`
+      <p><b>Arquétipo da Cleópatra</b></p>
+      <p>Faça em um ambiente calmo. Respire profundamente e repita com intenção:</p>
+      <p>“Eu ativo o arquétipo da Rainha Cleópatra, e neste exato momento, permito receber a energia de abundância, sucesso, persuasão e poder.</p>
+      <p>Torno-me uma verdadeira Rainha. A partir de hoje, todos ao meu redor percebem minha autoridade, meu arquétipo do governante e as mudanças positivas no meu comportamento.</p>
+      <p>Assim como Cleópatra conquistou tudo o que queria, assim serei. Tudo na minha vida flui. Eu vivo em abundância e prosperidade em todos os aspectos. Sou profundamente admirada e bem remunerada. O dinheiro está presente em minha vida com facilidade.</p>
+      <p>Eu sou a personificação da sedução. Eu irradio confiança. Minha beleza abre portas. Eu ativo o arquétipo da Cleópatra e trago para mim inteligência, persuasão, beleza e independência.”</p>
+
+      <p><b>Arquétipo da Sereia</b></p>
+      <p>Faça em um ambiente calmo. Repita a afirmação 7 vezes por 7 dias:</p>
+      <p>“Ativo agora o arquétipo da Sereia dentro de mim e me conecto com o poder divino da sedução e da beleza irresistível.</p>
+      <p>Eu ativo o arquétipo da Sereia em sua forma mais luminosa e consciente. Eu sou a força sutil e arrebatadora que transforma o impossível em inevitável. Vejo evidências diárias do meu encantamento.</p>
+      <p>Sou adorada à primeira vista. Meu encanto é imediato, natural e letal. Eu sou o puro poder de sedução e atração.</p>
+      <p>Minhas palavras possuem poder; elas encantam, convencem e atraem. Meu corpo é escultural, minha beleza é celestial, e minha influência cresce a cada dia.”</p>
+    `
+  },
+  {
+    unlockDay:5,
+    title:"Banhos da sedução, autoestima, atração e prosperidade",
+    subtitle:"Rituais de presença e intenção",
+    intro:"Rituais funcionam como marcos de mudança. O estado mental é o que ativa o significado do banho.",
+    bullets:[
+      ["Sedução","Presença, magnetismo e segurança."],
+      ["Atração","Energia alinhada e reciprocidade."],
+      ["Prosperidade","Abundância, expansão e posicionamento."]
+    ],
+    content:`
+      <p><b>Banho da Sedução — Ritual de Presença</b></p>
+      <p><b>Ingredientes:</b> 1 litro de água, pétalas de rosa vermelha, 1 colher de mel, 1 pau de canela, perfume opcional.</p>
+      <p><b>Preparo:</b> ferva a água, desligue, acrescente tudo, tampe por 10 minutos. Coe se preferir.</p>
+      <p><b>Como fazer:</b> após o banho normal, despeje do pescoço para baixo e mentalize: “Eu ativo minha presença, meu magnetismo e minha segurança.”</p>
+      <p><b>Afirmação:</b> “Eu sou presença. Eu sou magnetismo. Eu sou escolhida.”</p>
+
+      <p><b>Banho da Atração — Ritual de Magnetismo</b></p>
+      <p><b>Ingredientes:</b> 1 litro de água, pétalas de rosa branca ou rosa, açúcar mascavo ou mel, alecrim, perfume opcional.</p>
+      <p><b>Mentalização:</b> “Eu atraio relações claras, recíprocas e leves.”</p>
+      <p><b>Afirmação:</b> “Eu atraio quem me escolhe com clareza.”</p>
+
+      <p><b>Banho da Prosperidade — Ritual de Expansão</b></p>
+      <p><b>Ingredientes:</b> 1 litro de água, louro, manjericão, alecrim, 3 moedas ao lado como símbolo.</p>
+      <p><b>Mentalização:</b> “Eu me abro para oportunidades, crescimento e abundância.”</p>
+      <p><b>Afirmação:</b> “Eu sou merecedora de abundância e crescimento.”</p>
+
+      <p>O segredo dos banhos não é só a planta. É a postura depois: andar mais ereta, falar com mais calma, parar de se diminuir e agir como alguém que merece mais.</p>
+    `
+  },
+  {
+    unlockDay:6,
+    title:"Ritual de alinhar energias positivas",
+    subtitle:"Paz, leveza e novos pensamentos",
+    intro:"Um ritual simples pode ajudar a mente a entender que um novo ciclo está começando.",
+    bullets:[
+      ["Ambiente","Luz suave, aroma calmo e silêncio."],
+      ["Presença","Respiração, corpo e intenção."],
+      ["Nova direção","Pensamento leve, paz e reconexão."]
+    ],
+    content:`
+      <p><b>Ritual simples de alinhamento</b></p>
+      <ul>
+        <li>deixe o ambiente limpo e com luz suave</li>
+        <li>use aromatizador de lavanda, camomila ou baunilha leve</li>
+        <li>coloque uma música calma</li>
+      </ul>
+      <p><b>Passo 1:</b> sente-se ou fique em pé com a coluna alinhada. Respire profundamente por 1 minuto.</p>
+      <p><b>Passo 2:</b> coloque a mão no peito e sinta seu batimento.</p>
+      <p><b>Passo 3:</b> repita: “Eu libero o que me pesa. Eu acolho o que me fortalece. Eu escolho minha paz.”</p>
+      <p><b>Passo 4:</b> escreva uma intenção para o dia. Exemplo: “Hoje eu escolho cuidar de mim.”</p>
+      <p><b>Passo 5:</b> feche os olhos por 10 segundos e imagine sua vida mais leve, com mais paz e clareza.</p>
+      <p>O objetivo do ritual é dar ao seu cérebro uma pausa real e uma nova referência emocional.</p>
+    `
+  },
+  {
+    unlockDay:7,
+    title:"Plano interno para sair da dependência emocional",
+    subtitle:"Psicologia, autonomia e reconstrução",
+    intro:"Dependência emocional não é amor. É medo de ficar sem alguém. E isso pode ser reestruturado.",
+    bullets:[
+      ["Reduzir estímulos","Parar de alimentar o vínculo pelo excesso de gatilhos."],
+      ["Recuperar identidade","Voltar a ser alguém além da dor."],
+      ["Construir autonomia","Treinar uma vida boa sem depender do outro."]
+    ],
+    content:`
+      <p><b>Etapa 1 — Reduzir estímulos</b></p>
+      <p>Pare de reler conversas, stalkear e buscar sinais. Cada repetição reacende o circuito emocional.</p>
+
+      <p><b>Etapa 2 — Reativar identidade</b></p>
+      <p>Pergunte: “Quem eu era antes desse ciclo?” Volte para interesses, amizades e versões suas que foram apagadas.</p>
+
+      <p><b>Etapa 3 — Nova narrativa mental</b></p>
+      <p>Troque “eu perdi alguém” por “eu estou voltando para mim”. A forma como você nomeia a dor muda a forma como a mente processa a experiência.</p>
+
+      <p><b>Etapa 4 — Treinar autonomia</b></p>
+      <ul>
+        <li>vá a um café sozinha</li>
+        <li>faça algo simples sem postar</li>
+        <li>tome decisões pequenas por si mesma</li>
+      </ul>
+
+      <p><b>Etapa 5 — Reforçar valor próprio</b></p>
+      <p>Todos os dias, repita algo que fortaleça sua identidade: “Eu sou maravilhosa. Eu mereço paz. Eu mereço respeito. Eu não preciso me diminuir para ser escolhida.”</p>
+
+      <p>O melhor plano para sair da dependência emocional é o que reconstrói seu sistema interno: menos gatilho, mais clareza, menos medo, mais identidade.</p>
+    `
+  }
+];
+
+const $ = (id)=>document.getElementById(id);
+const fmt2 = (n)=>String(n).padStart(2,"0");
+
+function showToast(msg, type=""){
+  const t = $("toast");
+  t.className = "toast " + (type||"");
+  t.textContent = msg;
+  t.style.display = "block";
+  clearTimeout(showToast._tm);
+  showToast._tm = setTimeout(()=>{ t.style.display="none"; }, 2300);
+}
+
+function todayStr(){ return new Date().toLocaleDateString("pt-BR"); }
+function todayKey(){
+  const d = new Date();
+  return `${d.getFullYear()}-${fmt2(d.getMonth()+1)}-${fmt2(d.getDate())}`;
+}
+function parseDateKey(k){
+  const [y,m,dd] = k.split("-").map(Number);
+  return new Date(y, (m||1)-1, dd||1);
+}
+function ensureStartDate(){
+  let s = localStorage.getItem(START_KEY);
+  if(!s){
+    s = todayKey();
+    localStorage.setItem(START_KEY, s);
+  }
+  return s;
+}
+function dayIndex1to7(){
+  const start = parseDateKey(ensureStartDate());
+  const now = parseDateKey(todayKey());
+  const diff = Math.floor((now - start) / (24*60*60*1000)) + 1;
+  return Math.max(1, Math.min(7, diff));
+}
+function daysSinceStart(){
+  const startKey = localStorage.getItem(START_KEY);
+  if(!startKey) return 0;
+  const [y,m,d] = startKey.split("-").map(Number);
+  const start = new Date(y, m-1, d);
+  const now = new Date();
+  start.setHours(0,0,0,0);
+  now.setHours(0,0,0,0);
+  return Math.floor((now - start) / (24*60*60*1000));
+}
+function isExpired(){ return daysSinceStart() >= 7; }
+function lockExpired(){ localStorage.removeItem(UNLOCK_KEY); }
+
+function loadJSON(key, fallback){
+  try{
+    const v = localStorage.getItem(key);
+    if(!v) return fallback;
+    return JSON.parse(v);
+  }catch{
+    return fallback;
+  }
+}
+function saveJSON(key, value){
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+function loadProgress(){
+  const arr = loadJSON(PROG_KEY, null);
+  if(!Array.isArray(arr) || arr.length!==7) return new Array(7).fill(false);
+  return arr.map(Boolean);
+}
+function saveProgress(arr){ saveJSON(PROG_KEY, arr); }
+function computeDone(arr){ return arr.filter(Boolean).length; }
+
+function setDotByDone(done){
+  if(done >= 6){ $("dot").style.background="var(--ok)"; $("statusTxt").textContent="Quase lá"; $("progLabel").textContent="Muito perto"; return; }
+  if(done >= 3){ $("dot").style.background="var(--mid)"; $("statusTxt").textContent="Constância"; $("progLabel").textContent="Em construção"; return; }
+  $("dot").style.background="var(--bad)"; $("statusTxt").textContent="Começo"; $("progLabel").textContent="Primeiros passos";
+}
+
+function unlock(){
+  $("login").classList.add("hide");
+  $("app").classList.remove("hide");
+  $("topPill").textContent="Plano 7 dias";
+}
+
+$("enter").addEventListener("click", ()=>{
+  const p = ($("pass").value||"").trim();
+  if(p === APP_PASSWORD){
+    localStorage.setItem(UNLOCK_KEY,"1");
+    $("errBox").style.display="none";
+    unlock();
+    initApp();
+  }else{
+    $("errBox").style.display="block";
+  }
+});
+$("pass").addEventListener("keydown",(e)=>{ if(e.key==="Enter") $("enter").click(); });
+
+let progress = loadProgress();
+let treatIndex = null;
+let selectedTrigger = null;
+let selectedAction = null;
+
+/* checkin */
+function renderMoods(selected=null){
+  const box = $("moods");
+  box.innerHTML = "";
+  let sel = selected;
+
+  MOODS.forEach(m=>{
+    const div = document.createElement("div");
+    div.className = "chip" + (sel===m.k ? " sel" : "");
+    div.textContent = m.label;
+    div.onclick = ()=>{
+      sel = m.k;
+      [...box.children].forEach(c=>c.classList.remove("sel"));
+      div.classList.add("sel");
+      $("saveMood").disabled = false;
+      $("saveMood").dataset.sel = sel;
+    };
+    box.appendChild(div);
+  });
+
+  $("saveMood").disabled = !sel;
+  $("saveMood").dataset.sel = sel || "";
+}
+
+function setMessageFor(mood){
+  const di = dayIndex1to7();
+  const arr = MSG7[mood] || MSG7.ok;
+  const msg = arr[di-1] || arr[arr.length-1];
+  $("msgHead").textContent = msg.h;
+  $("msgText").textContent = msg.t;
+  $("messageCard").classList.remove("hide");
+}
+
+$("saveMood").addEventListener("click", ()=>{
+  const mood = $("saveMood").dataset.sel;
+  if(!mood) return;
+  const map = loadJSON(MOOD_KEY, {});
+  map[todayKey()] = mood;
+  saveJSON(MOOD_KEY, map);
+  $("checkinCard").style.display = "none";
+  setMessageFor(mood);
+  showToast("💛 Mensagem do dia liberada.", mood==="mal" ? "bad" : (mood==="ok" ? "warn" : "ok"));
+});
+
+/* progress */
+function updateProgressUI(){
+  const done = computeDone(progress);
+  $("done").textContent = done;
+  $("bar").style.width = Math.round((done/7)*100) + "%";
+  setDotByDone(done);
+  if(done===7) $("week2").classList.remove("hide");
+  else $("week2").classList.add("hide");
+}
+
+function updateTimeline(){
+  const box = $("timeline");
+  box.innerHTML = "";
+  const cur = dayIndex1to7();
+  const heights = [18, 28, 36, 44, 52, 62, 72];
+  for(let d=1; d<=7; d++){
+    const col = document.createElement("div");
+    const doneDay = progress[d-1] === true;
+    col.className = "tcol" + (d===cur ? " cur" : "") + (doneDay ? " done" : "");
+    col.innerHTML = `
+      <div class="tbar"><div class="fill" style="height:${heights[d-1]}%"></div></div>
+      <div class="tlabel">Dia ${d}</div>
+    `;
+    box.appendChild(col);
+  }
+}
+
+function updateFocusCard(){
+  const cur = dayIndex1to7();
+  const idx = cur-1;
+  $("focusHead").textContent = `✨ Dia ${cur} — seu foco`;
+  $("focusText").textContent = DAYS[idx].d;
+}
+
+/* plan */
+function renderDays(){
+  const box = $("days");
+  box.innerHTML = "";
+  const cur = dayIndex1to7();
+
+  progress.forEach((done, idx)=>{
+    const dayNum = idx+1;
+    const row = document.createElement("label");
+    row.className = "day" + (dayNum===cur ? " cur" : "") + (done ? " done" : "");
+    row.innerHTML = `
+      <input type="checkbox" ${done?"checked":""} />
+      <div class="t">
+        <b>${DAYS[idx].t}${dayNum===cur ? " • Hoje" : ""}</b>
+        <span>${DAYS[idx].d}</span>
+      </div>
+    `;
+    const cb = row.querySelector("input");
+    cb.addEventListener("change", ()=>{
+      const was = progress[idx];
+      progress[idx] = cb.checked;
+      saveProgress(progress);
+      updateProgressUI();
+      updateTimeline();
+      renderDays();
+      renderVipShelf();
+      if(!was && cb.checked) showToast("✅ Concluído. Um passo a mais em direção à sua paz. 🕊️", "ok");
+      if(was && !cb.checked) showToast("Tudo bem ajustar. Volte quando estiver pronta. 🌿", "warn");
+    });
+    box.appendChild(row);
+  });
+
+  updateFocusCard();
+}
+
+/* treats */
+function pickDailyTreat(){
+  const d = new Date();
+  const seed = (d.getFullYear()*10000 + (d.getMonth()+1)*100 + d.getDate());
+  const idx = seed % TREATS.length;
+  setTreat(idx);
+}
+function setTreat(i){
+  treatIndex = i;
+  $("treatTitle").textContent = TREATS[i].h;
+  $("treatText").textContent = TREATS[i].t;
+}
+$("newTreat").addEventListener("click", ()=>{
+  const next = treatIndex===null ? 0 : (treatIndex+1) % TREATS.length;
+  setTreat(next);
+  showToast("🌿 Nova sugestão.", "ok");
+});
+
+/* diary */
+function loadDiaryForToday(){
+  const map = loadJSON(DIARY_KEY, {});
+  const k = todayKey();
+  const entry = map[k] || {d1:"",d2:"",d3:""};
+  $("d1").value = entry.d1 || "";
+  $("d2").value = entry.d2 || "";
+  $("d3").value = entry.d3 || "";
+}
+function saveDiaryForToday(){
+  const map = loadJSON(DIARY_KEY, {});
+  const k = todayKey();
+  map[k] = {
+    d1: ($("d1").value||"").trim(),
+    d2: ($("d2").value||"").trim(),
+    d3: ($("d3").value||"").trim(),
+  };
+  saveJSON(DIARY_KEY, map);
+  showToast("💛 Diário salvo.", "ok");
+}
+$("saveDiary").addEventListener("click", saveDiaryForToday);
+
+/* letter */
+function loadLetter(){
+  const v = localStorage.getItem(LETTER_KEY) || "";
+  $("letter").value = v;
+}
+$("saveLetter").addEventListener("click", ()=>{
+  localStorage.setItem(LETTER_KEY, ($("letter").value||"").trim());
+  showToast("💌 Carta salva. Use quando bater o impulso.", "ok");
+});
+$("readLetter").addEventListener("click", ()=>{
+  const v = (localStorage.getItem(LETTER_KEY)||"").trim();
+  if(!v){ showToast("Escreva sua carta primeiro. 💛", "warn"); return; }
+  $("letterText").textContent = v;
+  $("letterBox").style.display = "block";
+  showToast("Leia com calma. Você se protege. 🛡️", "ok");
+});
+
+/* trigger map */
+function renderSimpleOpts(containerId, list, onPick){
+  const box = $(containerId);
+  box.innerHTML = "";
+  list.forEach(item=>{
+    const div = document.createElement("div");
+    div.className = "chip";
+    div.textContent = item;
+    div.onclick = ()=>{
+      [...box.children].forEach(c=>c.classList.remove("sel"));
+      div.classList.add("sel");
+      onPick(item);
+    };
+    box.appendChild(div);
+  });
+}
+renderSimpleOpts("triggerOpts", TRIGGERS, (v)=>selectedTrigger=v);
+renderSimpleOpts("actionOpts", ACTIONS, (v)=>selectedAction=v);
+
+$("saveTrigger").addEventListener("click", ()=>{
+  const intensity = Number(($("intensity").value||"").trim());
+  if(!selectedTrigger || !selectedAction || !(intensity>=1 && intensity<=10)){
+    showToast("Escolha gatilho, ação e intensidade (1–10).", "warn");
+    return;
+  }
+  const map = loadJSON(TRIGGER_KEY, {});
+  map[todayKey()] = {trigger:selectedTrigger, action:selectedAction, intensity, ts:Date.now()};
+  saveJSON(TRIGGER_KEY, map);
+  $("triggerSaved").style.display="block";
+  showToast("Salvo. Você ganhou clareza. 🌿", "ok");
+});
+
+/* checklists */
+function renderChecklist(containerId, key, items, toastMsg){
+  const box = $(containerId);
+  let state = loadJSON(key, items.map(()=>false));
+  if(!Array.isArray(state) || state.length!==items.length){
+    state = items.map(()=>false);
+    saveJSON(key, state);
+  }
+  box.innerHTML = "";
+  items.forEach((txt, idx)=>{
+    const row = document.createElement("label");
+    row.className = "day";
+    row.innerHTML = `
+      <input type="checkbox" ${state[idx] ? "checked" : ""} />
+      <div class="t"><b>${txt}</b></div>
+    `;
+    const cb = row.querySelector("input");
+    cb.onchange = ()=>{
+      const st = loadJSON(key, items.map(()=>false));
+      st[idx] = cb.checked;
+      saveJSON(key, st);
+      if(cb.checked) showToast(toastMsg, "ok");
+    };
+    box.appendChild(row);
+  });
+}
+renderChecklist("noList", NOLIST_KEY, NOLIST, "✨ Você está se respeitando.");
+renderChecklist("antiStalk", STALK_KEY, ANTISTALK, "🛡️ Você se protegeu hoje.");
+
+/* social */
+function rotateSocial(){
+  const el = $("socialLine");
+  let idx = 0;
+  el.textContent = "💬 " + SOCIAL[idx];
+  clearInterval(rotateSocial._tm);
+  rotateSocial._tm = setInterval(()=>{
+    idx = (idx+1) % SOCIAL.length;
+    el.textContent = "💬 " + SOCIAL[idx];
+  }, 3500);
+}
+
+/* emergency */
+let emergencyTimer = null;
+let remaining = 120;
+function renderEmergency(){
+  const m = Math.floor(remaining/60);
+  const s = remaining%60;
+  $("etime").textContent = `${fmt2(m)}:${fmt2(s)}`;
+  if(emergencyTimer){
+    $("edot").style.background = "var(--mid)";
+    $("emode").textContent = "Pausa ativa";
+  }else{
+    $("edot").style.background = "var(--ok)";
+    $("emode").textContent = "Pronta";
+  }
+}
+function stopEmergency(){
+  clearInterval(emergencyTimer);
+  emergencyTimer = null;
+  remaining = 120;
+  renderEmergency();
+}
+$("startEmergency").addEventListener("click", ()=>{
+  if(emergencyTimer) return;
+  remaining = 120;
+  renderEmergency();
+  showToast("🛡️ Modo proteção ativado. Respira.", "ok");
+  emergencyTimer = setInterval(()=>{
+    remaining--;
+    if(remaining <= 0){
+      clearInterval(emergencyTimer);
+      emergencyTimer = null;
+      $("edot").style.background = "var(--ok)";
+      $("emode").textContent = "Você voltou ao controle";
+      $("etime").textContent = "00:00";
+      showToast("✨ O pico passou. Agora escolha sua paz.", "ok");
+      return;
+    }
+    renderEmergency();
+  }, 1000);
+});
+$("resetEmergency").addEventListener("click", ()=>{
+  stopEmergency();
+  showToast("Resetado. 🕊️", "warn");
+});
+
+/* desabafo */
+$("vent").addEventListener("input", ()=>{ $("vcount").textContent = String($("vent").value.length); });
+
+function clamp600(s){
+  if(s.length <= 600) return s;
+  return s.slice(0, 597).trimEnd() + "...";
+}
+function friendAdvice(text){
+  const t = (text||"").toLowerCase();
+  const danger = ["me matar","suicid","tirar minha vida","não aguento viver","me machucar"];
+  const abuse = ["ameaçou","agrediu","bateu","violência","me forçou","abusou","assédio","me humilhou","me xingou","me control"];
+  const panic = ["crise","ansiedade","pânico","desespero","não consigo respirar","taquicardia"];
+  const relapse = ["mandei mensagem","stalk","bloqueei","desbloqueei","voltei","não consigo parar","depend","viciado"];
+  const pos = ["melhor","bem","leve","calma","orgulhosa","feliz","consegui","avancei"];
+  const neg = ["triste","choro","chor","dor","vazio","sozinha","sem saída","acabou comigo","não presto","culpa","rejeição"];
+  const hit = (arr)=>arr.some(w=>t.includes(w));
+  const countHits = (arr)=>arr.reduce((s,w)=>s+(t.includes(w)?1:0),0);
+
+  if(hit(danger)){
+    return "Amiga, eu sinto muito que você esteja assim. Se você estiver em risco agora, ligue 188 (CVV – Brasil) ou vá a um pronto atendimento, e fale com alguém de confiança perto de você. Você merece apoio de verdade. 💛";
+  }
+  if(hit(abuse)){
+    return "Amiga… isso não é amor, é agressão ou controle. Sua segurança vem primeiro. No Brasil, ligue 180 e, em emergência, 190. Você merece proteção e respeito. 🛡️";
+  }
+  const p = countHits(pos), n = countHits(neg);
+  if(p > n && p >= 1){
+    return clamp600("Amiga, dá pra sentir que você está virando a chave. ✨ Não precisa ser perfeito — só constante. Hoje, faz uma coisa pequena por você e não negocia sua paz. Se bater impulso, volta pro modo emergência. 👑");
+  }
+  if(hit(panic)){
+    return clamp600("Amiga, primeiro: respira comigo. 🫁 Faça 4-4-6 por 4 vezes. Agora volta pro corpo: água, levanta e anda 2 min. Você não precisa decidir tudo hoje. Só se proteger hoje. 🕊️");
+  }
+  if(hit(relapse)){
+    return clamp600("Amiga, recaída não anula evolução. 🌿 Agora volta pro controle: pausa 2 min, respira 4-4-6, e faz a ação mínima. Hoje é sobre escolher você. 💛");
+  }
+  return clamp600("Amiga, eu te vejo. 💛 Pausa 2 minutos, respira 4-4-6, e repete: “eu não negocio minha paz”. Depois escolhe uma ação pequena por você. Seu brilho volta quando você se escolhe. ✨");
+}
+$("replyBtn").addEventListener("click", ()=>{
+  const text = ($("vent").value||"").trim();
+  if(!text){ showToast("Escreve um pouquinho primeiro. 💛", "warn"); return; }
+  $("friendText").textContent = friendAdvice(text);
+  $("friendReply").style.display = "block";
+  showToast("💛 Estou com você.", "ok");
+});
+
+/* crise modal */
+const modalBg = $("modalBg");
+const modalBody = $("modalBody");
+let crisisStep = 1;
+let crisisNeed = null;
+let crisisOutcome = null;
+let crisisTimer = null;
+let crisisRemain = 600;
+
+function openModal(){
+  modalBg.style.display="flex";
+  crisisStep = 1;
+  crisisNeed = null;
+  crisisOutcome = null;
+  renderCrisisStep();
+}
+function closeModal(){
+  modalBg.style.display="none";
+  stopCrisisTimer();
+}
+$("crisisBtn").addEventListener("click", openModal);
+$("closeModal").addEventListener("click", closeModal);
+modalBg.addEventListener("click", (e)=>{ if(e.target===modalBg) closeModal(); });
+
+function stopCrisisTimer(){
+  clearInterval(crisisTimer);
+  crisisTimer = null;
+  crisisRemain = 600;
+}
+
+function renderCrisisStep(){
+  if(crisisStep===1){
+    modalBody.innerHTML = `
+      <div class="small"><b>Etapa 1/3</b></div>
+      <h2 style="margin-top:8px">O que você está buscando agora?</h2>
+      <div class="grid" style="margin-top:10px">
+        <button class="btn btnG" onclick="pickNeed('Carinho')">Carinho</button>
+        <button class="btn btnG" onclick="pickNeed('Segurança')">Segurança</button>
+        <button class="btn btnG" onclick="pickNeed('Validação')">Validação</button>
+        <button class="btn btnG" onclick="pickNeed('Paz')">Paz</button>
+      </div>
+    `;
+    return;
+  }
+  if(crisisStep===2){
+    modalBody.innerHTML = `
+      <div class="small"><b>Etapa 2/3</b></div>
+      <h2 style="margin-top:8px">Se você mandar mensagem agora, o que provavelmente vai acontecer?</h2>
+      <div class="grid" style="margin-top:10px">
+        <button class="btn btnG" onclick="pickOutcome('Vou me sentir ignorada')">Vou me sentir ignorada</button>
+        <button class="btn btnG" onclick="pickOutcome('Vou ter um alívio curto')">Vou ter um alívio curto</button>
+        <button class="btn btnG" onclick="pickOutcome('Vou me sentir pior depois')">Vou me sentir pior depois</button>
+        <button class="btn btnG" onclick="pickOutcome('Ele pode nem responder')">Ele pode nem responder</button>
+      </div>
+    `;
+    return;
+  }
+  modalBody.innerHTML = `
+    <div class="small"><b>Etapa 3/3</b></div>
+    <h2 style="margin-top:8px">Agora, escolha sua paz por 10 minutos.</h2>
+    <div class="tile">
+      <b>Você buscava: ${crisisNeed}</b>
+      <p>Você previu: ${crisisOutcome}</p>
+    </div>
+    <div class="hr"></div>
+    <div class="tile">
+      <b>⏳ Pausa: <span class="kbd" id="cTimer">10:00</span></b>
+      <p>Água • levanta • anda 2 minutos • respira 4-4-6. Volta pro corpo.</p>
+    </div>
+    <div class="grid" style="margin-top:10px">
+      <button class="btn btnP" id="start10">Iniciar pausa de 10 minutos</button>
+      <button class="btn btnG" id="jump">Ir para o Modo Emergência</button>
+    </div>
+  `;
+  $("start10").onclick = startCrisisTimer;
+  $("jump").onclick = ()=>{
+    closeModal();
+    $("emergencyCard").scrollIntoView({behavior:"smooth", block:"start"});
+    showToast("🛡️ Vamos atravessar isso juntas.", "ok");
+  };
+}
+window.pickNeed = (v)=>{ crisisNeed=v; crisisStep=2; renderCrisisStep(); };
+window.pickOutcome = (v)=>{ crisisOutcome=v; crisisStep=3; renderCrisisStep(); };
+
+function startCrisisTimer(){
+  if(crisisTimer) return;
+  crisisRemain = 600;
+  const tick = ()=>{
+    const mm = Math.floor(crisisRemain/60);
+    const ss = crisisRemain%60;
+    const el = document.getElementById("cTimer");
+    if(el) el.textContent = `${fmt2(mm)}:${fmt2(ss)}`;
+  };
+  tick();
+  showToast("⏳ Pausa iniciada. Você está se protegendo.", "ok");
+  crisisTimer = setInterval(()=>{
+    crisisRemain--;
+    tick();
+    if(crisisRemain<=0){
+      stopCrisisTimer();
+      showToast("✨ O pico passou. Agora escolha sua paz.", "ok");
+    }
+  }, 1000);
+}
+
+/* welcome */
+$("startJourney").addEventListener("click", ()=>{
+  localStorage.setItem(WELCOME_KEY, "1");
+  $("welcomeCard").classList.add("hide");
+  showToast("👑 Você começou. Um passo por vez.", "ok");
+});
+
+/* reset */
+$("wipe").addEventListener("click", ()=>{
+  localStorage.removeItem(PROG_KEY);
+  localStorage.removeItem(DIARY_KEY);
+  localStorage.removeItem(MOOD_KEY);
+  localStorage.removeItem(TRIGGER_KEY);
+  localStorage.removeItem(NOLIST_KEY);
+  localStorage.removeItem(STALK_KEY);
+  progress = new Array(7).fill(false);
+  renderDays();
+  updateProgressUI();
+  updateTimeline();
+  renderVipShelf();
+  loadDiaryForToday();
+  showToast("Dados apagados neste aparelho. 🧼", "warn");
+});
+
+/* VIP */
+const libModalBg = $("libModalBg");
+const libBody = $("libBody");
+$("closeLib").addEventListener("click", ()=> libModalBg.style.display = "none");
+libModalBg.addEventListener("click", (e)=>{ if(e.target===libModalBg) libModalBg.style.display="none"; });
+
+function crownSVG(){
+  return `
+    <svg viewBox="0 0 24 24">
+      <path d="M4 9l4 4 4-6 4 6 4-4"/>
+      <path d="M6 19h12"/>
+      <path d="M6 19l-1-8"/>
+      <path d="M18 19l1-8"/>
+    </svg>
+  `;
+}
+
+function renderVipShelf(){
+  const shelf = $("vipShelf");
+  const currentDay = dayIndex1to7();
+  shelf.innerHTML = "";
+
+  VIP_MODULES.forEach((m, idx)=>{
+    const unlocked = currentDay >= m.unlockDay;
+    const btn = document.createElement("button");
+    btn.className = "vipCard" + (unlocked ? "" : " locked");
+    btn.innerHTML = `
+      <div class="vipTop">
+        <div class="vipPoster">${crownSVG()}</div>
+        <div class="vipInfo">
+          <strong>${m.title}</strong>
+          <small>${m.subtitle}</small>
+        </div>
+        <div class="vipArrow">${unlocked ? "›" : "🔒"}</div>
+      </div>
+      <div class="vipTag ${unlocked ? "vipOpen" : "vipLocked"}">
+        ${unlocked ? `Liberado no Dia ${m.unlockDay}` : `Disponível no Dia ${m.unlockDay}`}
+      </div>
+    `;
+    btn.onclick = ()=>{
+      if(!unlocked){
+        showToast(`Esse conteúdo libera no Dia ${m.unlockDay} da sua jornada. ✨`, "warn");
+        return;
+      }
+      openVipModule(idx);
+    };
+    shelf.appendChild(btn);
+  });
+}
+
+function openVipModule(index){
+  const m = VIP_MODULES[index];
+  libBody.innerHTML = `
+    <div class="vipCover">
+      <div class="vipSeal">${crownSVG()}<span>Conteúdo exclusivo</span></div>
+      <div class="vipTitle">${m.title}</div>
+      <div class="vipSub">${m.intro}</div>
+
+      <div class="vipList">
+        <div class="vipItem">
+          <b>${m.bullets[0][0]}</b>
+          <span>${m.bullets[0][1]}</span>
+        </div>
+        <div class="vipItem">
+          <b>${m.bullets[1][0]}</b>
+          <span>${m.bullets[1][1]}</span>
+        </div>
+        <div class="vipItem">
+          <b>${m.bullets[2][0]}</b>
+          <span>${m.bullets[2][1]}</span>
+        </div>
+      </div>
+
+      <div class="libActions">
+        <button class="btn btnP" id="enterVip">Entrar no conteúdo</button>
+      </div>
+
+      <div class="vipMini">Você está entrando em uma área especial da sua reconstrução emocional.</div>
+    </div>
+  `;
+
+  libModalBg.style.display = "flex";
+
+  $("enterVip").onclick = ()=>{
+    libBody.innerHTML = `
+      <div class="vipCover" style="margin-bottom:14px">
+        <div class="vipSeal">${crownSVG()}<span>Mini Área VIP</span></div>
+        <div class="vipTitle">${m.title}</div>
+        <div class="vipSub">${m.subtitle}</div>
+      </div>
+      ${m.content}
+      <div class="libActions">
+        <button class="btn btnG" id="backVip">Voltar para a capa</button>
+      </div>
+    `;
+    $("backVip").onclick = ()=> openVipModule(index);
+  };
+}
+
+function initApp(){
+  if(isExpired()){
+    lockExpired();
+    document.body.innerHTML = `
+      <div style="min-height:100vh;display:grid;place-items:center;padding:20px;background:#070A10;color:#F4F2EE;font-family:system-ui">
+        <div style="max-width:560px;width:100%;border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:16px;background:rgba(255,255,255,.03)">
+          <h2 style="margin:0 0 10px;font-size:18px">Seu acesso de 7 dias foi concluído ✅</h2>
+          <p style="margin:0 0 12px;line-height:1.5;color:rgba(255,255,255,.80)">
+            Você terminou sua jornada inicial. Para continuar com novas fases e manutenção da sua paz, renove seu acesso.
+          </p>
+          <a href="quiz.html" style="display:block;text-align:center;padding:12px;border-radius:16px;background:linear-gradient(180deg,#F1DE9A,#D4AF37);color:#0b0f16;font-weight:900;text-decoration:none">
+            Renovar acesso
+          </a>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  $("today").textContent = todayStr();
+  ensureStartDate();
+
+  const seen = localStorage.getItem(WELCOME_KEY)==="1";
+  if(!seen) $("welcomeCard").classList.remove("hide");
+
+  const moodMap = loadJSON(MOOD_KEY, {});
+  const mk = todayKey();
+  const moodToday = moodMap[mk];
+  renderMoods(moodToday || null);
+
+  if(moodToday){
+    $("checkinCard").style.display = "none";
+    setMessageFor(moodToday);
+  }else{
+    $("checkinCard").style.display = "block";
+    $("messageCard").classList.add("hide");
+  }
+
+  renderDays();
+  updateProgressUI();
+  updateTimeline();
+  updateFocusCard();
+  pickDailyTreat();
+  renderEmergency();
+  loadDiaryForToday();
+  loadLetter();
+  rotateSocial();
+  renderVipShelf();
+}
+
+if(localStorage.getItem(UNLOCK_KEY)==="1"){
+  unlock();
+  initApp();
+}
+</script>
+</body>
+</html>

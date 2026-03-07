@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teste • Dependência Emocional</title>
+  <style>
+    :root{
+      --bg:#070A10;
+      --card:#0E1626;
+      --stroke:rgba(255,255,255,.10);
+      --txt:#F4F2EE;
+      --mut:#B9C0CC;
+      --gold:#D4AF37;
+      --gold2:#F1DE9A;
+      --ok:#35D07F;
+      --mid:#FFB020;
+      --bad:#FF4D4D;
+      --r:18px;
+      --shadow:0 18px 50px rgba(0,0,0,.55);
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      color:var(--txt);
+      padding:14px 12px 26px;
+      background:
+        radial-gradient(900px 520px at 20% -10%, rgba(212,175,55,.18), transparent 60%),
+        radial-gradient(820px 520px at 90% 0%, rgba(241,222,154,.08), transparent 55%),
+        radial-gradient(820px 620px at 30% 120%, rgba(107,30,46,.10), transparent 60%),
+        var(--bg);
+    }
+
+    .wrap{max-width:560px;margin:0 auto}
+
+    .top{
+      position:sticky; top:10px; z-index:5;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding:12px;
+      border:1px solid var(--stroke);
+      border-radius:var(--r);
+      background:rgba(255,255,255,.03);
+      backdrop-filter:blur(10px);
+      box-shadow:var(--shadow);
+    }
+
+    .brand{display:flex; gap:10px; align-items:center}
+    .logo{
+      width:38px;height:38px;border-radius:14px;display:grid;place-items:center;
+      border:1px solid rgba(212,175,55,.35);
+      background:rgba(212,175,55,.10);
+      flex:0 0 auto;
+    }
+    .logo svg path{
+      stroke:rgba(212,175,55,.95);
+      stroke-width:1.8;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .h1{margin:0;font-size:13px;letter-spacing:.2px;font-weight:950}
+    .p{margin:2px 0 0;color:var(--mut);font-size:12px;line-height:1.2}
+
+    .pill{
+      font-size:12px;
+      color:#0b0f16;
+      padding:7px 10px;
+      border-radius:999px;
+      background:linear-gradient(180deg,var(--gold2),var(--gold));
+      font-weight:950;
+      border:1px solid rgba(0,0,0,.25);
+      white-space:nowrap;
+    }
+
+    .card{
+      margin-top:12px;
+      padding:14px;
+      border:1px solid var(--stroke);
+      border-radius:var(--r);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+
+    h2{margin:0 0 8px;font-size:18px}
+    h3{margin:0 0 8px;font-size:15px}
+    .small{color:var(--mut);font-size:12px;line-height:1.45}
+    .hr{height:1px;background:rgba(255,255,255,.08);margin:12px 0}
+    .grid{display:grid;gap:10px}
+
+    .btn{
+      width:100%;
+      border:0;
+      border-radius:16px;
+      padding:12px 12px;
+      font-weight:950;
+      letter-spacing:.2px;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .btnP{
+      background:linear-gradient(180deg,var(--gold2),var(--gold));
+      color:#0b0f16;
+      box-shadow:0 14px 30px rgba(0,0,0,.45);
+    }
+
+    .btnG{
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--stroke);
+      color:var(--txt);
+    }
+
+    .btn:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+      box-shadow:none;
+    }
+
+    .opt{
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.22);
+      border-radius:16px;
+      padding:13px 12px;
+      cursor:pointer;
+      font-weight:900;
+      letter-spacing:.1px;
+      color:rgba(255,255,255,.92);
+      transition:.18s ease;
+    }
+
+    .opt:hover{
+      border-color:rgba(212,175,55,.25);
+      background:rgba(212,175,55,.06);
+      transform:translateY(-1px);
+    }
+
+    .opt.sel{
+      border-color:rgba(212,175,55,.45);
+      background:rgba(212,175,55,.10);
+    }
+
+    .kbd{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      font-size:12px;
+      padding:3px 8px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.28);
+      color:var(--txt);
+    }
+
+    .progWrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .progMini{
+      height:6px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .progMini > div{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg,var(--gold),var(--gold2));
+      transition:width .25s ease;
+    }
+
+    .badge{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.25);
+      color:var(--mut);
+      font-size:12px;
+    }
+
+    .dot{width:10px;height:10px;border-radius:999px;background:var(--mid)}
+
+    .resultBox{
+      border:1px solid rgba(212,175,55,.16);
+      border-radius:20px;
+      padding:18px;
+      background:
+        radial-gradient(500px 180px at 20% 0%, rgba(212,175,55,.12), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+
+    .resultMain{
+      font-size:24px;
+      line-height:1.2;
+      margin:8px 0 10px;
+      font-weight:950;
+      background:linear-gradient(90deg,#F1DE9A,#D4AF37,#F1DE9A);
+      background-size:200% auto;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation:goldGlow 4s linear infinite;
+    }
+
+    @keyframes goldGlow{
+      to{background-position:200% center;}
+    }
+
+    .resultText{
+      font-size:14px;
+      line-height:1.6;
+      color:rgba(255,255,255,.88);
+    }
+
+    .resultMini{
+      display:grid;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .resultMiniCard{
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;
+      padding:12px;
+      background:rgba(255,255,255,.03);
+    }
+
+    .resultMiniCard b{
+      display:block;
+      margin-bottom:4px;
+      font-size:13px;
+    }
+
+    .resultMiniCard span{
+      color:var(--mut);
+      font-size:12px;
+      line-height:1.45;
+    }
+
+    .urgencyBar{
+      margin-top:16px;
+      padding:11px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,176,32,.25);
+      background:rgba(255,176,32,.10);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .urgencyBar strong{
+      font-size:12px;
+      color:#FFD48A;
+      letter-spacing:.2px;
+    }
+
+    .priceBox{
+      margin-top:16px;
+      text-align:center;
+      padding:14px;
+      border-radius:16px;
+      border:1px solid rgba(212,175,55,.16);
+      background:rgba(255,255,255,.03);
+    }
+
+    .priceSmall{
+      font-size:12px;
+      color:var(--mut);
+    }
+
+    .priceMain{
+      font-size:34px;
+      font-weight:950;
+      color:var(--gold2);
+      line-height:1.1;
+      margin:5px 0;
+    }
+
+    .toast{
+      position:fixed;
+      left:12px; right:12px; bottom:14px;
+      max-width:560px; margin:0 auto;
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(212,175,55,.28);
+      background:rgba(212,175,55,.10);
+      color:rgba(255,255,255,.92);
+      font-size:12.8px;
+      line-height:1.45;
+      display:none;
+      z-index:999;
+    }
+
+    .toast.ok{border-color: rgba(53,208,127,.28); background: rgba(53,208,127,.10)}
+    .toast.warn{border-color: rgba(255,176,32,.28); background: rgba(255,176,32,.10)}
+
+    a{color:var(--gold2);text-decoration:none}
+    a:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="top">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path d="M4 9l4 4 4-6 4 6 4-4"/>
+            <path d="M6 19h12"/>
+            <path d="M6 19l-1-8"/>
+            <path d="M18 19l1-8"/>
+          </svg>
+        </div>
+        <div>
+          <div class="h1">Teste • Dependência Emocional</div>
+          <div class="p">7 perguntas • resultado imediato • celular</div>
+        </div>
+      </div>
+      <div class="pill" id="pill">Início</div>
+    </div>
+
+    <div class="card">
+      <div class="progWrap">
+        <div class="badge">
+          <span class="dot" id="pDot"></span>
+          <span id="pTxt">Leva menos de 30s</span>
+        </div>
+        <div class="small"><span class="kbd" id="step">0/7</span></div>
+      </div>
+      <div class="progMini" style="margin-top:10px"><div id="bar"></div></div>
+      <div class="small" style="margin-top:10px" id="hint">Responda com sinceridade. Isso já é um passo por você. 🌿</div>
+    </div>
+
+    <div class="card" id="view"></div>
+
+    <div class="card">
+      <div class="small">
+        Já comprou e tem senha? <a href="acesso.html">Acesse aqui</a>.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+const BUY_URL = "https://go.tribopay.com.br/epiyxasqk0";
+const ACCESS_URL = "acesso.html";
+
+const QUIZ = [
+  {
+    q: "Quando a pessoa demora para responder, você…",
+    a: [
+      {t:"Fico ansiosa e começo a imaginar coisas", s:2},
+      {t:"Penso nisso várias vezes", s:1},
+      {t:"Consigo esperar tranquilamente", s:0},
+    ]
+  },
+  {
+    q: "Seu humor depende muito da atenção dela?",
+    a: [
+      {t:"Sim, quando ela está distante eu fico mal", s:2},
+      {t:"Um pouco", s:1},
+      {t:"Não depende disso", s:0},
+    ]
+  },
+  {
+    q: "Você já sentiu medo de perder essa pessoa sem motivo claro?",
+    a: [
+      {t:"Muitas vezes", s:2},
+      {t:"Algumas vezes", s:1},
+      {t:"Raramente", s:0},
+    ]
+  },
+  {
+    q: "Você pensa nessa pessoa várias vezes ao longo do dia?",
+    a: [
+      {t:"O tempo todo", s:2},
+      {t:"Algumas vezes", s:1},
+      {t:"Quase nunca", s:0},
+    ]
+  },
+  {
+    q: "Quando ela parece distante, você sente necessidade de correr atrás?",
+    a: [
+      {t:"Sim, fico inquieta", s:2},
+      {t:"Às vezes", s:1},
+      {t:"Não", s:0},
+    ]
+  },
+  {
+    q: "Você já se pegou stalkeando para saber o que ela está fazendo?",
+    a: [
+      {t:"Sim, frequentemente", s:2},
+      {t:"Algumas vezes", s:1},
+      {t:"Nunca", s:0},
+    ]
+  },
+  {
+    q: "Se essa pessoa desaparecesse hoje, como você se sentiria?",
+    a: [
+      {t:"Perdida emocionalmente", s:2},
+      {t:"Triste, mas seguiria", s:1},
+      {t:"Seguiria normalmente", s:0},
+    ]
+  }
+];
+
+const COMMIT = {
+  q: "Antes de ver seu resultado: se você pudesse mudar apenas UMA coisa hoje, o que seria?",
+  a: [
+    {t:"Parar de sentir tanta ansiedade por alguém", k:"ansiedade"},
+    {t:"Recuperar minha autoestima", k:"autoestima"},
+    {t:"Parar de correr atrás de quem não me valoriza", k:"migalhas"},
+    {t:"Voltar a me sentir em paz comigo mesma", k:"paz"},
+  ]
+};
+
+const SOCIAL = [
+  "💬 No 3º dia eu parei de stalkear.",
+  "💬 Eu voltei a dormir melhor.",
+  "💬 Eu parei de me humilhar.",
+  "💬 Eu comecei a me sentir mais leve."
+];
+
+let i = 0;
+let answers = [];
+let score = 0;
+let commitKey = null;
+
+const $ = (id)=>document.getElementById(id);
+
+function toast(msg,type=""){
+  const t=$("toast");
+  t.className="toast "+(type||"");
+  t.textContent=msg;
+  t.style.display="block";
+  clearTimeout(toast._tm);
+  toast._tm=setTimeout(()=>t.style.display="none",2200);
+}
+
+function setProgress(step,total){
+  $("step").textContent = `${step}/${total}`;
+  $("bar").style.width = Math.round((step/total)*100) + "%";
+
+  if(step<=1){
+    $("pDot").style.background = "var(--bad)";
+    $("pTxt").textContent = "Leva menos de 30s";
+  }else if(step<total){
+    $("pDot").style.background = "var(--mid)";
+    $("pTxt").textContent = "Você está avançando";
+  }else{
+    $("pDot").style.background = "var(--ok)";
+    $("pTxt").textContent = "Quase lá";
+  }
+}
+
+function tier(score){
+  if(score <= 4) return "baixo";
+  if(score <= 9) return "moderado";
+  return "elevado";
+}
+
+function focusPack(key){
+  const packs = {
+    ansiedade: {
+      title: "Seu foco principal é diminuir a ansiedade emocional.",
+      mirror: "Isso costuma aparecer como aperto no peito, pensamentos repetitivos e necessidade de alívio rápido quando a outra pessoa se afasta.",
+    },
+    autoestima: {
+      title: "Seu foco principal é recuperar sua autoestima.",
+      mirror: "Isso costuma aparecer quando você se diminui para caber, aceita menos do que merece e depois sente culpa por isso.",
+    },
+    migalhas: {
+      title: "Seu foco principal é parar de correr atrás de migalhas.",
+      mirror: "Isso costuma aparecer quando você espera sinais, aceita confusão e entra em alerta para não ser deixada.",
+    },
+    paz: {
+      title: "Seu foco principal é voltar a sentir paz.",
+      mirror: "Isso costuma aparecer como cansaço emocional, mente acelerada e sensação de estar presa em um ciclo que drena sua energia.",
+    }
+  };
+  return packs[key] || packs.paz;
+}
+
+function resultCopy(t){
+  if(t==="baixo"){
+    return {
+      title:"Seu resultado indica apego emocional baixo",
+      text:`Baseado nas suas respostas, você tende a manter mais estabilidade emocional.
+Ainda assim, fortalecer autoestima e limites agora pode evitar novos ciclos no futuro.`
+    };
+  }
+  if(t==="moderado"){
+    return {
+      title:"Seu resultado indica dependência emocional moderada",
+      text:`Baseado nas suas respostas, existe um padrão de apego emocional acontecendo.
+Em alguns momentos, sua mente pode buscar alívio na atenção da outra pessoa — e isso vira ansiedade.`
+    };
+  }
+  return {
+    title:"Seu resultado indica sinais de dependência emocional elevada",
+    text:`Baseado nas suas respostas, existe um ciclo emocional ocupando mais espaço do que a sua paz.
+Isso costuma aparecer como ansiedade, medo de perder, busca por sinais e dificuldade de parar mesmo sabendo que te faz mal.`
+  };
+}
+
+function endOfDayCountdown(){
+  const now = new Date();
+  const end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+  const diff = end - now;
+  const h = Math.max(0, Math.floor(diff/3600000));
+  const m = Math.max(0, Math.floor((diff%3600000)/60000));
+  const s = Math.max(0, Math.floor((diff%60000)/1000));
+  return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+}
+
+function renderIntro(){
+  $("pill").textContent="Início";
+  setProgress(0,7);
+  $("hint").textContent = "Responda com sinceridade. Isso já é um passo por você. 🌿";
+
+  $("view").innerHTML = `
+    <h2>Você já sentiu que está emocionalmente presa a alguém… mesmo sabendo que isso está te fazendo mal?</h2>
+    <div class="small">
+      Ansiedade quando demora a responder. Medo de perder. Necessidade de atenção.<br><br>
+      Responda com sinceridade. Leva menos de 30 segundos.
+    </div>
+    <div class="hr"></div>
+    <div class="grid">
+      <button class="btn btnP" id="start">Começar teste</button>
+      <div class="small">✔ 7 perguntas • ✔ resultado imediato • ✔ no celular</div>
+    </div>
+  `;
+
+  $("start").onclick = ()=>{
+    i=0;
+    answers=[];
+    score=0;
+    commitKey=null;
+    renderQuestion();
+  };
+}
+
+function renderQuestion(){
+  $("pill").textContent = `Pergunta ${i+1}`;
+  setProgress(i+1,7);
+
+  if(i===4){
+    $("hint").textContent = "✨ Quase lá… seu diagnóstico emocional está ficando claro.";
+  }else{
+    $("hint").textContent = "Responda com sinceridade. Você não precisa se culpar — só se cuidar.";
+  }
+
+  const q = QUIZ[i];
+  let sel = null;
+
+  $("view").innerHTML = `
+    <div class="small"><b>Pergunta ${i+1} de 7</b></div>
+    <h2 style="margin-top:8px">${q.q}</h2>
+    <div class="grid" id="opts" style="margin-top:10px"></div>
+    <div class="hr"></div>
+    <div class="grid">
+      <button class="btn btnP" id="next" disabled>${i===6 ? "Continuar" : "Próxima pergunta"}</button>
+      <button class="btn btnG" id="back" ${i===0 ? "disabled" : ""}>Voltar</button>
+    </div>
+  `;
+
+  const opts = $("opts");
+
+  q.a.forEach((o, idx)=>{
+    const div = document.createElement("div");
+    div.className = "opt";
+    div.textContent = o.t;
+    div.onclick = ()=>{
+      sel = idx;
+      [...opts.children].forEach(c=>c.classList.remove("sel"));
+      div.classList.add("sel");
+      $("next").disabled = false;
+    };
+    opts.appendChild(div);
+  });
+
+  $("back").onclick = ()=>{
+    if(i===0) return;
+    const prev = answers.pop();
+    score -= prev.s;
+    i--;
+    renderQuestion();
+    toast("Voltou 1 pergunta.", "warn");
+  };
+
+  $("next").onclick = ()=>{
+    const picked = q.a[sel];
+    answers.push(picked);
+    score += picked.s;
+
+    if(i===6){
+      renderCommit();
+    }else{
+      i++;
+      renderQuestion();
+    }
+  };
+}
+
+function renderCommit(){
+  $("pill").textContent="Compromisso";
+  setProgress(7,7);
+  $("hint").textContent = "Antes de ver o resultado, escolha com sinceridade. 💛";
+
+  let sel = null;
+
+  $("view").innerHTML = `
+    <div class="small"><b>Último passo</b></div>
+    <h2 style="margin-top:8px">${COMMIT.q}</h2>
+    <div class="grid" id="opts" style="margin-top:10px"></div>
+    <div class="hr"></div>
+    <div class="grid">
+      <button class="btn btnP" id="see" disabled>Ver meu resultado</button>
+      <button class="btn btnG" id="back">Voltar</button>
+    </div>
+  `;
+
+  const opts = $("opts");
+  COMMIT.a.forEach((o, idx)=>{
+    const div = document.createElement("div");
+    div.className="opt";
+    div.textContent=o.t;
+    div.onclick=()=>{
+      sel=idx;
+      [...opts.children].forEach(c=>c.classList.remove("sel"));
+      div.classList.add("sel");
+      $("see").disabled=false;
+    };
+    opts.appendChild(div);
+  });
+
+  $("back").onclick = ()=>{
+    const last = answers.pop();
+    score -= last.s;
+    i=6;
+    renderQuestion();
+  };
+
+  $("see").onclick = ()=>{
+    commitKey = COMMIT.a[sel].k;
+    renderResult();
+  };
+}
+
+function renderResult(){
+  $("pill").textContent="Resultado";
+  const t = tier(score);
+  const c = resultCopy(t);
+  const pack = focusPack(commitKey);
+  const social = SOCIAL[Math.floor(Math.random()*SOCIAL.length)];
+
+  $("pDot").style.background = t==="baixo" ? "var(--ok)" : (t==="moderado" ? "var(--mid)" : "var(--bad)");
+  $("pTxt").textContent = "Baseado nas suas respostas";
+  $("hint").textContent = "Respira. Você acabou de ganhar clareza. 🕊️";
+
+  $("view").innerHTML = `
+    <div class="resultBox">
+      <div class="badge"><span class="dot" style="background:${t==="baixo" ? "var(--ok)" : (t==="moderado" ? "var(--mid)" : "var(--bad)")};"></span><span><b>${t.toUpperCase()}</b></span></div>
+
+      <div class="resultMain">${c.title}</div>
+
+      <div class="resultText">
+        ${c.text}
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="resultText"><b>${pack.title}</b></div>
+      <div class="resultText" style="margin-top:8px">${pack.mirror}</div>
+
+      <div class="hr"></div>
+
+      <h3>Foi por isso que criamos o</h3>
+      <div class="resultMain" style="font-size:22px">Plano 7 Dias • Reconstrução Emocional</div>
+
+      <div class="resultText">
+        Um plano guiado dentro do app para ajudar você a voltar a se sentir forte, segura e em paz com você mesma.
+      </div>
+
+      <div class="resultMini">
+        <div class="resultMiniCard">
+          <b>✔ Plano guiado de 7 dias</b>
+          <span>Exercícios práticos para reduzir o apego emocional e reconstruir sua paz.</span>
+        </div>
+
+        <div class="resultMiniCard">
+          <b>✔ Modo emergência</b>
+          <span>Um espaço pensado para os momentos de recaída, impulso e ansiedade.</span>
+        </div>
+
+        <div class="resultMiniCard">
+          <b>✔ Diário, progresso e check-in</b>
+          <span>Ferramentas para acompanhar sua evolução emocional dia após dia.</span>
+        </div>
+
+        <div class="resultMiniCard">
+          <b>✔ Mini Área VIP</b>
+          <span>Conteúdos premium liberados conforme os dias passam, como uma jornada exclusiva.</span>
+        </div>
+
+        <div class="resultMiniCard">
+          <b>✔ Conteúdo pensado para mulheres</b>
+          <span>Autoestima, postura, magnetismo, rituais e reconstrução emocional no mesmo lugar.</span>
+        </div>
+      </div>
+
+      <div class="urgencyBar">
+        <strong>⚠ Oferta de lançamento disponível hoje para novas participantes do teste</strong>
+        <span class="kbd" id="count">--:--:--</span>
+      </div>
+
+      <div class="priceBox">
+        <div class="priceSmall">Acesso completo por apenas</div>
+        <div class="priceMain">R$ 27</div>
+        <div class="priceSmall">pagamento único</div>
+      </div>
+
+      <div class="grid" style="margin-top:14px">
+        <a class="btn btnP" href="${BUY_URL}" style="display:inline-block;text-align:center;text-decoration:none">
+          Quero começar minha reconstrução
+        </a>
+        <a class="btn btnG" href="${ACCESS_URL}" style="display:inline-block;text-align:center;text-decoration:none">
+          Já comprei • Tenho senha
+        </a>
+      </div>
+
+      <div class="small" style="margin-top:12px">
+        ${social}
+      </div>
+
+      <div class="small" style="margin-top:10px">
+        Importante: Aqui você encontra um espaço seguro para explorar sua jornada de reconstrução emocional.
+      </div>
+    </div>
+  `;
+
+  const tick = ()=>{
+    const el = document.getElementById("count");
+    if(!el) return;
+    el.textContent = endOfDayCountdown();
+  };
+  tick();
+  clearInterval(renderResult._tm);
+  renderResult._tm = setInterval(tick, 1000);
+
+  toast("Resultado pronto. Agora é com você. 💛", "ok");
+}
+
+renderIntro();
+</script>
+</body>
+</html>
