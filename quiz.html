@@ -1,18 +1,16 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-  <link rel="manifest" href="manifest.webmanifest">
-
-<meta name="theme-color" content="#070A10">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-<link rel="apple-touch-icon" href="icons/icon-192.png">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Teste • Dependência Emocional</title>
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#070A10">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
   <style>
     :root{
       --bg:#070A10;
@@ -32,19 +30,6 @@
     *{box-sizing:border-box}
 
     body{
-      <button id="installBtn" style="
-width:100%;
-margin-top:10px;
-padding:12px;
-border-radius:14px;
-border:none;
-background:#D4AF37;
-color:#000;
-font-weight:700;
-display:none;
-">
-Adicionar à tela inicial
-</button>
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
       color:var(--txt);
@@ -364,6 +349,15 @@ Adicionar à tela inicial
     </div>
 
     <div class="card" id="view"></div>
+
+    <div class="card">
+      <button class="btn btnG" id="installBtn" style="display:none;">
+        Adicionar à tela inicial
+      </button>
+      <div class="small" style="margin-top:8px">
+        Instale o atalho no celular para acessar mais rápido.
+      </div>
+    </div>
 
     <div class="card">
       <div class="small">
@@ -787,37 +781,40 @@ function renderResult(){
 
 renderIntro();
 </script>
-  <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/mulher-prioridade/sw.js');
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("/mulher-prioridade/sw.js").catch(function(err){
+      console.log("SW error:", err);
+    });
   });
 }
-    <script>
-let deferredPrompt;
+</script>
 
-window.addEventListener('beforeinstallprompt', (e) => {
+<script>
+let deferredPrompt = null;
+
+window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  document.getElementById('installBtn').style.display = 'block';
+  const btn = document.getElementById("installBtn");
+  if (btn) btn.style.display = "block";
 });
 
-document.getElementById('installBtn').addEventListener('click', async () => {
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("installBtn");
+  if (!btn) return;
 
-  if (!deferredPrompt) return;
-
-  deferredPrompt.prompt();
-
-  const { outcome } = await deferredPrompt.userChoice;
-
-  deferredPrompt = null;
-
+  btn.addEventListener("click", async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    btn.style.display = "none";
+  });
 });
 </script>
-</script>
+
 </body>
-
 </html>
-
-
-
