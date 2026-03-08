@@ -1,18 +1,16 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-  <link rel="manifest" href="manifest.webmanifest">
-
-<meta name="theme-color" content="#070A10">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-<link rel="apple-touch-icon" href="icons/icon-192.png">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pagamento Confirmado • Mulher Prioridade</title>
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#070A10">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
   <style>
     :root{
       --bg:#070A10;
@@ -277,44 +275,43 @@
   <div class="toast" id="toast"></div>
 
 <script>
-  const PASSWORD = "PRIORIDADE7";
-  const ACCESS_LINK = location.origin
-    ? (location.origin + location.pathname.replace("obrigada.html","acesso.html"))
-    : "acesso.html";
+const PASSWORD = "PRIORIDADE7";
+const ACCESS_LINK = location.origin + location.pathname.replace("obrigada.html", "acesso.html");
 
-  document.getElementById("passTxt").textContent = PASSWORD;
+document.getElementById("passTxt").textContent = PASSWORD;
 
-  const toast = document.getElementById("toast");
-  function showToast(msg){
-    toast.textContent = msg;
-    toast.style.display = "block";
-    clearTimeout(showToast._tm);
-    showToast._tm = setTimeout(()=>toast.style.display="none", 2200);
+const toast = document.getElementById("toast");
+function showToast(msg){
+  toast.textContent = msg;
+  toast.style.display = "block";
+  clearTimeout(showToast._tm);
+  showToast._tm = setTimeout(()=>toast.style.display="none", 2200);
+}
+
+document.getElementById("copyLink").onclick = async ()=>{
+  try{
+    await navigator.clipboard.writeText(ACCESS_LINK);
+    showToast("Link copiado com sucesso. ✅");
+  }catch{
+    const tmp = document.createElement("textarea");
+    tmp.value = ACCESS_LINK;
+    document.body.appendChild(tmp);
+    tmp.select();
+    document.execCommand("copy");
+    tmp.remove();
+    showToast("Link copiado. ✅");
   }
-
-  document.getElementById("copyLink").onclick = async ()=>{
-    try{
-      await navigator.clipboard.writeText(ACCESS_LINK);
-      showToast("Link copiado com sucesso. ✅");
-    }catch{
-      const tmp = document.createElement("textarea");
-      tmp.value = ACCESS_LINK;
-      document.body.appendChild(tmp);
-      tmp.select();
-      document.execCommand("copy");
-      tmp.remove();
-      showToast("Link copiado. ✅");
-    }
-  };
+};
 </script>
-  <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/mulher-prioridade/sw.js');
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("/mulher-prioridade/sw.js").catch(function(err){
+      console.log("SW error:", err);
+    });
   });
 }
 </script>
 </body>
-
 </html>
-
