@@ -1838,6 +1838,14 @@ if(localStorage.getItem(UNLOCK_KEY)==="1"){
   initApp();
 }
 </script>
+  <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/mulher-prioridade/sw.js');
+  });
+}
+</script>
 </body>
 
 </html>
+
