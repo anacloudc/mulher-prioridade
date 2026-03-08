@@ -774,6 +774,14 @@ function renderResult(){
 
 renderIntro();
 </script>
+  <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/mulher-prioridade/sw.js');
+  });
+}
+</script>
 </body>
 
 </html>
+
