@@ -1,18 +1,15 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-  <link rel="manifest" href="manifest.webmanifest">
-
-<meta name="theme-color" content="#070A10">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-<link rel="apple-touch-icon" href="icons/icon-192.png">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mulher Prioridade • Plano 7 Dias</title>
+
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#070A10">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon" href="icon-192.png">
 
 <style>
 :root{
@@ -255,7 +252,6 @@ a{color:var(--gold2);text-decoration:none}
 a:hover{text-decoration:underline}
 .hide{display:none}
 
-/* modal crise */
 .modalBg{
   position:fixed; inset:0; background:rgba(0,0,0,.55);
   display:none; align-items:flex-end; justify-content:center; z-index:999;
@@ -269,7 +265,6 @@ a:hover{text-decoration:underline}
 }
 .modalTop{display:flex;align-items:center;justify-content:space-between;gap:10px}
 
-/* mini área vip */
 .libModalBg{
   position:fixed; inset:0;
   background:rgba(0,0,0,.72);
@@ -298,7 +293,6 @@ a:hover{text-decoration:underline}
 }
 .libModal ul{padding-left:18px}
 
-/* biblioteca vip visual */
 .titleGlow{
   background:linear-gradient(90deg,#F1DE9A,#D4AF37,#F1DE9A);
   background-size:200% auto;
@@ -487,7 +481,6 @@ a:hover{text-decoration:underline}
   margin-top:14px;
 }
 
-/* toast */
 .toast{
   position: fixed;
   left: 12px; right: 12px; bottom: 14px;
@@ -527,7 +520,6 @@ a:hover{text-decoration:underline}
     <div class="pill" id="topPill">Acesso</div>
   </div>
 
-  <!-- LOGIN -->
   <section class="card" id="login">
     <h2>Entrar</h2>
     <div class="small">Digite a senha de acesso enviada após a compra.</div>
@@ -535,6 +527,7 @@ a:hover{text-decoration:underline}
     <input class="input" id="pass" type="password" placeholder="Senha de acesso" autocomplete="current-password" />
     <div class="grid" style="margin-top:10px">
       <button class="btn btnP" id="enter">Acessar</button>
+      <button class="btn btnG" id="installBtn" style="display:none;">Adicionar à tela inicial</button>
       <div class="tile" id="errBox" style="display:none;border-color:rgba(255,77,77,.28);background:rgba(255,77,77,.10)">
         <b>Senha incorreta</b>
         <p>Verifique e tente novamente.</p>
@@ -543,7 +536,6 @@ a:hover{text-decoration:underline}
     </div>
   </section>
 
-  <!-- APP -->
   <section class="hide" id="app">
 
     <div class="card hide" id="welcomeCard">
@@ -785,7 +777,6 @@ a:hover{text-decoration:underline}
       <div class="tile" style="margin-top:10px"><b>3) Magnetismo e presença</b><p>Postura + energia + atração saudável.</p></div>
     </div>
 
-    <!-- BIBLIOTECA VIP -->
     <div class="card">
       <h2 class="titleGlow">Mini Área VIP</h2>
       <div class="small">Conteúdo exclusivo liberado conforme sua evolução no plano.</div>
@@ -806,7 +797,6 @@ a:hover{text-decoration:underline}
   </section>
 </div>
 
-<!-- MODAL CRISE -->
 <div class="modalBg" id="modalBg">
   <div class="modal">
     <div class="modalTop">
@@ -818,7 +808,6 @@ a:hover{text-decoration:underline}
   </div>
 </div>
 
-<!-- MODAL VIP -->
 <div class="libModalBg" id="libModalBg">
   <div class="libModal">
     <div class="modalTop">
@@ -956,8 +945,7 @@ const VIP_MODULES = [
         <li>troque a roupa de “sobrevivência” por uma que te faça sentir viva</li>
         <li>olhe no espelho por 30 segundos e repita: “eu estou voltando para mim”</li>
       </ul>
-      <p>Outra chave importante é a regra das micro vitórias: escolha uma ação pequena por dia e cumpra. O cérebro aumenta a sensação de controle quando você finaliza o que promete.</p>
-      <p>Exemplos: caminhar 10 minutos, passar um hidratante com calma, organizar algo pequeno, fazer uma maquiagem leve, comprar uma flor, ouvir uma música que te faça lembrar de quem você era antes da dor.</p>
+      <p>Outra chave importante é a regra das micro vitórias: escolha uma ação pequena por dia e cumpra.</p>
       <p>Autoestima não é só se achar bonita. É começar a agir como alguém que merece paz, respeito e presença.</p>
     `
   },
@@ -973,15 +961,13 @@ const VIP_MODULES = [
     ],
     content:`
       <p>A atração verdadeira não nasce da necessidade. Ela nasce da presença.</p>
-      <p>Quando a mulher está ansiosa, o corpo transmite urgência. Quando está inteira, transmite valor. Essa diferença muda completamente a forma como ela é percebida.</p>
+      <p>Quando a mulher está ansiosa, o corpo transmite urgência. Quando está inteira, transmite valor.</p>
       <ul>
         <li>não responda por impulso</li>
         <li>não cobre clareza de quem ama confundir</li>
         <li>não entregue tudo de você para ser notada</li>
       </ul>
-      <p>O código da atração feminina está em três pilares: calma, mistério e coerência.</p>
-      <p>Calma faz o outro sentir que você não está desesperada. Mistério cria curiosidade. Coerência mostra que você sabe o que quer.</p>
-      <p>Uma mulher com energia alinhada não corre atrás de migalhas. Ela deixa claro, pelo comportamento, que se escolhe primeiro.</p>
+      <p>Uma mulher com energia alinhada não corre atrás de migalhas.</p>
     `
   },
   {
@@ -996,16 +982,13 @@ const VIP_MODULES = [
     ],
     content:`
       <p>Magnetismo é energia + corpo + estado emocional.</p>
-      <p>O cérebro humano lê sinais antes mesmo das palavras. Isso significa que sua postura muda a forma como você é sentida.</p>
       <ul>
         <li>ande com os ombros levemente para trás</li>
         <li>fale um pouco mais devagar</li>
         <li>olhe nos olhos por dois segundos a mais</li>
         <li>respire antes de responder algo emocional</li>
       </ul>
-      <p>Sobre simpatias e rituais simbólicos: use-os como gatilhos de estado, não como dependência. O que ativa o magnetismo é o comportamento coerente depois do ritual.</p>
       <p><b>Mini ritual de presença:</b> antes de sair, respire fundo 3 vezes, passe seu perfume com intenção e diga: “eu não corro atrás, eu atraio”.</p>
-      <p>Desejo cresce quando sua energia não transmite carência.</p>
     `
   },
   {
@@ -1020,18 +1003,9 @@ const VIP_MODULES = [
     ],
     content:`
       <p><b>Arquétipo da Cleópatra</b></p>
-      <p>Faça em um ambiente calmo. Respire profundamente e repita com intenção:</p>
-      <p>“Eu ativo o arquétipo da Rainha Cleópatra, e neste exato momento, permito receber a energia de abundância, sucesso, persuasão e poder.</p>
-      <p>Torno-me uma verdadeira Rainha. A partir de hoje, todos ao meu redor percebem minha autoridade, meu arquétipo do governante e as mudanças positivas no meu comportamento.</p>
-      <p>Assim como Cleópatra conquistou tudo o que queria, assim serei. Tudo na minha vida flui. Eu vivo em abundância e prosperidade em todos os aspectos. Sou profundamente admirada e bem remunerada. O dinheiro está presente em minha vida com facilidade.</p>
-      <p>Eu sou a personificação da sedução. Eu irradio confiança. Minha beleza abre portas. Eu ativo o arquétipo da Cleópatra e trago para mim inteligência, persuasão, beleza e independência.”</p>
-
+      <p>“Eu ativo o arquétipo da Rainha Cleópatra e permito receber a energia de abundância, sucesso, persuasão e poder.”</p>
       <p><b>Arquétipo da Sereia</b></p>
-      <p>Faça em um ambiente calmo. Repita a afirmação 7 vezes por 7 dias:</p>
-      <p>“Ativo agora o arquétipo da Sereia dentro de mim e me conecto com o poder divino da sedução e da beleza irresistível.</p>
-      <p>Eu ativo o arquétipo da Sereia em sua forma mais luminosa e consciente. Eu sou a força sutil e arrebatadora que transforma o impossível em inevitável. Vejo evidências diárias do meu encantamento.</p>
-      <p>Sou adorada à primeira vista. Meu encanto é imediato, natural e letal. Eu sou o puro poder de sedução e atração.</p>
-      <p>Minhas palavras possuem poder; elas encantam, convencem e atraem. Meu corpo é escultural, minha beleza é celestial, e minha influência cresce a cada dia.”</p>
+      <p>“Ativo agora o arquétipo da Sereia dentro de mim e me conecto com o poder divino da sedução e da beleza irresistível.”</p>
     `
   },
   {
@@ -1045,23 +1019,10 @@ const VIP_MODULES = [
       ["Prosperidade","Abundância, expansão e posicionamento."]
     ],
     content:`
-      <p><b>Banho da Sedução — Ritual de Presença</b></p>
-      <p><b>Ingredientes:</b> 1 litro de água, pétalas de rosa vermelha, 1 colher de mel, 1 pau de canela, perfume opcional.</p>
-      <p><b>Preparo:</b> ferva a água, desligue, acrescente tudo, tampe por 10 minutos. Coe se preferir.</p>
-      <p><b>Como fazer:</b> após o banho normal, despeje do pescoço para baixo e mentalize: “Eu ativo minha presença, meu magnetismo e minha segurança.”</p>
-      <p><b>Afirmação:</b> “Eu sou presença. Eu sou magnetismo. Eu sou escolhida.”</p>
-
-      <p><b>Banho da Atração — Ritual de Magnetismo</b></p>
-      <p><b>Ingredientes:</b> 1 litro de água, pétalas de rosa branca ou rosa, açúcar mascavo ou mel, alecrim, perfume opcional.</p>
-      <p><b>Mentalização:</b> “Eu atraio relações claras, recíprocas e leves.”</p>
-      <p><b>Afirmação:</b> “Eu atraio quem me escolhe com clareza.”</p>
-
-      <p><b>Banho da Prosperidade — Ritual de Expansão</b></p>
-      <p><b>Ingredientes:</b> 1 litro de água, louro, manjericão, alecrim, 3 moedas ao lado como símbolo.</p>
-      <p><b>Mentalização:</b> “Eu me abro para oportunidades, crescimento e abundância.”</p>
-      <p><b>Afirmação:</b> “Eu sou merecedora de abundância e crescimento.”</p>
-
-      <p>O segredo dos banhos não é só a planta. É a postura depois: andar mais ereta, falar com mais calma, parar de se diminuir e agir como alguém que merece mais.</p>
+      <p><b>Banho da Sedução</b> — pétalas de rosa vermelha, mel e canela.</p>
+      <p><b>Banho da Atração</b> — rosa branca, mel e alecrim.</p>
+      <p><b>Banho da Prosperidade</b> — louro, manjericão e alecrim.</p>
+      <p>O segredo não é só a planta. É a postura depois.</p>
     `
   },
   {
@@ -1075,18 +1036,12 @@ const VIP_MODULES = [
       ["Nova direção","Pensamento leve, paz e reconexão."]
     ],
     content:`
-      <p><b>Ritual simples de alinhamento</b></p>
       <ul>
         <li>deixe o ambiente limpo e com luz suave</li>
         <li>use aromatizador de lavanda, camomila ou baunilha leve</li>
-        <li>coloque uma música calma</li>
+        <li>respire profundamente por 1 minuto</li>
+        <li>repita: “Eu libero o que me pesa. Eu acolho o que me fortalece. Eu escolho minha paz.”</li>
       </ul>
-      <p><b>Passo 1:</b> sente-se ou fique em pé com a coluna alinhada. Respire profundamente por 1 minuto.</p>
-      <p><b>Passo 2:</b> coloque a mão no peito e sinta seu batimento.</p>
-      <p><b>Passo 3:</b> repita: “Eu libero o que me pesa. Eu acolho o que me fortalece. Eu escolho minha paz.”</p>
-      <p><b>Passo 4:</b> escreva uma intenção para o dia. Exemplo: “Hoje eu escolho cuidar de mim.”</p>
-      <p><b>Passo 5:</b> feche os olhos por 10 segundos e imagine sua vida mais leve, com mais paz e clareza.</p>
-      <p>O objetivo do ritual é dar ao seu cérebro uma pausa real e uma nova referência emocional.</p>
     `
   },
   {
@@ -1100,26 +1055,11 @@ const VIP_MODULES = [
       ["Construir autonomia","Treinar uma vida boa sem depender do outro."]
     ],
     content:`
-      <p><b>Etapa 1 — Reduzir estímulos</b></p>
-      <p>Pare de reler conversas, stalkear e buscar sinais. Cada repetição reacende o circuito emocional.</p>
-
-      <p><b>Etapa 2 — Reativar identidade</b></p>
-      <p>Pergunte: “Quem eu era antes desse ciclo?” Volte para interesses, amizades e versões suas que foram apagadas.</p>
-
-      <p><b>Etapa 3 — Nova narrativa mental</b></p>
-      <p>Troque “eu perdi alguém” por “eu estou voltando para mim”. A forma como você nomeia a dor muda a forma como a mente processa a experiência.</p>
-
-      <p><b>Etapa 4 — Treinar autonomia</b></p>
-      <ul>
-        <li>vá a um café sozinha</li>
-        <li>faça algo simples sem postar</li>
-        <li>tome decisões pequenas por si mesma</li>
-      </ul>
-
-      <p><b>Etapa 5 — Reforçar valor próprio</b></p>
-      <p>Todos os dias, repita algo que fortaleça sua identidade: “Eu sou maravilhosa. Eu mereço paz. Eu mereço respeito. Eu não preciso me diminuir para ser escolhida.”</p>
-
-      <p>O melhor plano para sair da dependência emocional é o que reconstrói seu sistema interno: menos gatilho, mais clareza, menos medo, mais identidade.</p>
+      <p><b>Etapa 1:</b> parar de reler conversas e stalkear.</p>
+      <p><b>Etapa 2:</b> voltar para interesses e versões suas que foram apagadas.</p>
+      <p><b>Etapa 3:</b> trocar “eu perdi alguém” por “eu estou voltando para mim”.</p>
+      <p><b>Etapa 4:</b> treinar autonomia com pequenas ações sozinha.</p>
+      <p><b>Etapa 5:</b> reforçar valor próprio todos os dias.</p>
     `
   }
 ];
@@ -1223,7 +1163,6 @@ let treatIndex = null;
 let selectedTrigger = null;
 let selectedAction = null;
 
-/* checkin */
 function renderMoods(selected=null){
   const box = $("moods");
   box.innerHTML = "";
@@ -1267,7 +1206,6 @@ $("saveMood").addEventListener("click", ()=>{
   showToast("💛 Mensagem do dia liberada.", mood==="mal" ? "bad" : (mood==="ok" ? "warn" : "ok"));
 });
 
-/* progress */
 function updateProgressUI(){
   const done = computeDone(progress);
   $("done").textContent = done;
@@ -1301,7 +1239,6 @@ function updateFocusCard(){
   $("focusText").textContent = DAYS[idx].d;
 }
 
-/* plan */
 function renderDays(){
   const box = $("days");
   box.innerHTML = "";
@@ -1336,7 +1273,6 @@ function renderDays(){
   updateFocusCard();
 }
 
-/* treats */
 function pickDailyTreat(){
   const d = new Date();
   const seed = (d.getFullYear()*10000 + (d.getMonth()+1)*100 + d.getDate());
@@ -1354,7 +1290,6 @@ $("newTreat").addEventListener("click", ()=>{
   showToast("🌿 Nova sugestão.", "ok");
 });
 
-/* diary */
 function loadDiaryForToday(){
   const map = loadJSON(DIARY_KEY, {});
   const k = todayKey();
@@ -1376,7 +1311,6 @@ function saveDiaryForToday(){
 }
 $("saveDiary").addEventListener("click", saveDiaryForToday);
 
-/* letter */
 function loadLetter(){
   const v = localStorage.getItem(LETTER_KEY) || "";
   $("letter").value = v;
@@ -1393,7 +1327,6 @@ $("readLetter").addEventListener("click", ()=>{
   showToast("Leia com calma. Você se protege. 🛡️", "ok");
 });
 
-/* trigger map */
 function renderSimpleOpts(containerId, list, onPick){
   const box = $(containerId);
   box.innerHTML = "";
@@ -1425,7 +1358,6 @@ $("saveTrigger").addEventListener("click", ()=>{
   showToast("Salvo. Você ganhou clareza. 🌿", "ok");
 });
 
-/* checklists */
 function renderChecklist(containerId, key, items, toastMsg){
   const box = $(containerId);
   let state = loadJSON(key, items.map(()=>false));
@@ -1454,7 +1386,6 @@ function renderChecklist(containerId, key, items, toastMsg){
 renderChecklist("noList", NOLIST_KEY, NOLIST, "✨ Você está se respeitando.");
 renderChecklist("antiStalk", STALK_KEY, ANTISTALK, "🛡️ Você se protegeu hoje.");
 
-/* social */
 function rotateSocial(){
   const el = $("socialLine");
   let idx = 0;
@@ -1466,7 +1397,6 @@ function rotateSocial(){
   }, 3500);
 }
 
-/* emergency */
 let emergencyTimer = null;
 let remaining = 120;
 function renderEmergency(){
@@ -1511,7 +1441,6 @@ $("resetEmergency").addEventListener("click", ()=>{
   showToast("Resetado. 🕊️", "warn");
 });
 
-/* desabafo */
 $("vent").addEventListener("input", ()=>{ $("vcount").textContent = String($("vent").value.length); });
 
 function clamp600(s){
@@ -1523,7 +1452,7 @@ function friendAdvice(text){
   const danger = ["me matar","suicid","tirar minha vida","não aguento viver","me machucar"];
   const abuse = ["ameaçou","agrediu","bateu","violência","me forçou","abusou","assédio","me humilhou","me xingou","me control"];
   const panic = ["crise","ansiedade","pânico","desespero","não consigo respirar","taquicardia"];
-  const relapse = ["mandei mensagem","stalk","bloqueei","desbloqueei","voltei","não consigo parar","depend","viciado"];
+  const relapse = ["mandei mensagem","stalk","bloqueei","desbloqueiei","voltei","não consigo parar","depend","viciado"];
   const pos = ["melhor","bem","leve","calma","orgulhosa","feliz","consegui","avancei"];
   const neg = ["triste","choro","chor","dor","vazio","sozinha","sem saída","acabou comigo","não presto","culpa","rejeição"];
   const hit = (arr)=>arr.some(w=>t.includes(w));
@@ -1555,7 +1484,6 @@ $("replyBtn").addEventListener("click", ()=>{
   showToast("💛 Estou com você.", "ok");
 });
 
-/* crise modal */
 const modalBg = $("modalBg");
 const modalBody = $("modalBody");
 let crisisStep = 1;
@@ -1660,14 +1588,12 @@ function startCrisisTimer(){
   }, 1000);
 }
 
-/* welcome */
 $("startJourney").addEventListener("click", ()=>{
   localStorage.setItem(WELCOME_KEY, "1");
   $("welcomeCard").classList.add("hide");
   showToast("👑 Você começou. Um passo por vez.", "ok");
 });
 
-/* reset */
 $("wipe").addEventListener("click", ()=>{
   localStorage.removeItem(PROG_KEY);
   localStorage.removeItem(DIARY_KEY);
@@ -1684,7 +1610,6 @@ $("wipe").addEventListener("click", ()=>{
   showToast("Dados apagados neste aparelho. 🧼", "warn");
 });
 
-/* VIP */
 const libModalBg = $("libModalBg");
 const libBody = $("libBody");
 $("closeLib").addEventListener("click", ()=> libModalBg.style.display = "none");
@@ -1838,14 +1763,40 @@ if(localStorage.getItem(UNLOCK_KEY)==="1"){
   initApp();
 }
 </script>
-  <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/mulher-prioridade/sw.js');
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("/mulher-prioridade/sw.js").catch(function(err){
+      console.log("SW error:", err);
+    });
   });
 }
 </script>
+
+<script>
+let deferredPrompt = null;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const btn = document.getElementById("installBtn");
+  if (btn) btn.style.display = "block";
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("installBtn");
+  if (!btn) return;
+
+  btn.addEventListener("click", async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    btn.style.display = "none";
+  });
+});
+</script>
+
 </body>
-
 </html>
-
