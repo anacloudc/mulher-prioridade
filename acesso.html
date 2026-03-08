@@ -298,6 +298,14 @@
   document.getElementById("go").onclick = enter;
   pass.addEventListener("keydown", (e)=>{ if(e.key==="Enter") enter(); });
 </script>
+  <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/mulher-prioridade/sw.js');
+  });
+}
+</script>
 </body>
 
 </html>
+
